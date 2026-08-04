@@ -66,11 +66,10 @@ main {
 /* 첫 화면 */
 
 .hero {
-  min-height: 78vh;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  padding: 10vh 0 7vh;
+  justify-content: flex-start;
+  padding: 120px 0 90px;
   border-bottom: 1px solid #dddddd;
 }
 

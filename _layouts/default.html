@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% if page.title %}{{ page.title | escape }} | {% endif %}{{ site.title | escape }}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter+Tight:wght@400;500;600&family=Noto+Sans+KR:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ '/style.css' | relative_url }}?v=7">
+</head>
+<body>
+  <a class="skip-link" href="#main">본문으로 건너뛰기</a>
+  {% include header.html %}
+  <main id="main" class="{{ page.page_class }}">{{ content }}</main>
+  {% include footer.html %}
+</body>
+</html>
+

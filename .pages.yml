@@ -1,0 +1,192 @@
+media:
+  - name: images
+    label: Portfolio Images
+    input: assets/images
+    output: /assets/images
+    rename: safe
+    extensions:
+      - jpg
+      - jpeg
+      - png
+      - webp
+    categories:
+      - image
+
+
+content:
+
+  # ==================================================
+  # ABOUT
+  # ==================================================
+
+  - name: profile
+    label: About
+    type: file
+    path: _data/profile.yml
+    format: yaml
+
+    operations:
+      delete: false
+
+    fields:
+
+      - name: name_ko
+        label: 이름
+        type: string
+        required: true
+
+      - name: name_en
+        label: 영문 이름
+        type: string
+        required: true
+
+      - name: intro
+        label: 자기소개
+        type: text
+
+      - name: sections
+        label: CV / Profile
+        type: object
+
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{title}"
+
+        fields:
+
+          - name: title
+            label: 섹션 이름
+            type: string
+            required: true
+
+          - name: items
+            label: 항목
+            type: object
+
+            list:
+              collapsible:
+                collapsed: true
+                summary: "{year} — {title}"
+
+            fields:
+
+              - name: year
+                label: 연도
+                type: string
+
+              - name: title
+                label: 제목
+                type: string
+
+              - name: description
+                label: 설명
+                type: text
+
+
+      - name: contact
+        label: Contact
+        type: object
+
+        fields:
+
+          - name: email
+            label: Email
+            type: string
+
+          - name: links
+            label: Links
+            type: object
+            list: true
+
+            fields:
+
+              - name: label
+                label: 표시 이름
+                type: string
+
+              - name: url
+                label: URL
+                type: string
+
+
+  # ==================================================
+  # PROJECTS
+  # ==================================================
+
+  - name: projects
+    label: Projects
+    type: collection
+    path: _projects
+    format: yaml-frontmatter
+
+    filename: "{primary}.md"
+
+    view:
+      primary: title
+      fields:
+        - title
+        - year
+        - published
+        - featured
+      sort:
+        - order
+        - year
+        - title
+      default:
+        sort: order
+        order: asc
+
+    fields:
+
+      - name: title
+        label: 프로젝트 제목
+        type: string
+        required: true
+
+      - name: subtitle
+        label: 부제
+        type: string
+
+      - name: year
+        label: 연도
+        type: number
+
+      - name: order
+        label: 표시 순서
+        type: number
+        required: true
+
+      - name: location
+        label: 위치
+        type: string
+
+      - name: published
+        label: 공개
+        type: boolean
+
+      - name: featured
+        label: 메인 페이지에 표시
+        type: boolean
+
+      - name: cover
+        label: 대표 이미지
+        type: image
+
+        options:
+          media: images
+          extensions:
+            - jpg
+            - jpeg
+            - png
+            - webp
+          rename: safe
+
+      - name: body
+        label: 프로젝트 본문
+        type: rich-text
+
+        options:
+          format: markdown
+          media: images
+          rename: safe

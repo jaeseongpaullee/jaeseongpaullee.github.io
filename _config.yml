@@ -1,0 +1,9 @@
+title: "JPaulLEE"
+url: "https://jaeseongpaullee.github.io"
+baseurl: ""
+
+markdown: kramdown
+
+collections:
+  projects:
+    output: false

@@ -7,7 +7,7 @@ page_class: home
 {% assign projects = site.projects | where: 'published', true | where: 'featured', true | sort: 'order' %}
 {% for project in projects %}
   {% assign position = forloop.index0 | modulo: 3 %}
-  <a class="work-card {% if position == 0 %}work-full{% elsif position == 1 %}work-left{% else %}work-right{% endif %}" href="{{ '/project.html' | relative_url }}#{{ project.slug | escape }}">
+  <a class="work-card {% if position == 0 %}work-full{% elsif position == 1 %}work-left{% else %}work-right{% endif %}" href="{{ project.url | relative_url }}">
     <div class="work-image">
       {% if project.cover and project.cover != '' %}<img src="{{ project.cover | relative_url | escape }}" alt="{{ project.title | escape }}" {% unless forloop.first %}loading="lazy"{% endunless %}>
       {% else %}<span class="image-empty">{{ project.title | escape }}</span>{% endif %}

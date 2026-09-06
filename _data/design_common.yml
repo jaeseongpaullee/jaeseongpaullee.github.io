@@ -1,0 +1,18 @@
+logo:
+  font: inherit
+  desktop: 38
+  mobile: 25
+  line_height: 1.55
+  letter_spacing: 0
+menu:
+  font: inherit
+  desktop: 15
+  mobile: 11
+  line_height: 1.55
+  letter_spacing: 0
+footer:
+  font: inherit
+  desktop: 10
+  mobile: 10
+  line_height: 1.55
+  letter_spacing: 0

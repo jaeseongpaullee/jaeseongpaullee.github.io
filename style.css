@@ -905,3 +905,12 @@ body { font-size: calc(16px * var(--text-scale)); }
 @media (max-width: 800px) {
   .site-header, .site-footer, main.home, main.about, main.projects { width: calc(100% - 32px); }
 }
+
+main.project-detail { width: min(var(--content-width), calc(100% - clamp(40px, 10vw, 160px))); margin: 0 auto; padding-bottom: 90px; }
+.detail-back { margin: 40px 0; }
+.detail-back a { text-decoration: underline; }
+.detail-heading { padding: 35px 0 50px; }
+.project-item { color: inherit; }
+.project-item:focus-visible { outline-offset: -2px; }
+.about-name, .projects-title { font-weight: 400; }
+@media(max-width:800px) { main.project-detail { width: calc(100% - 32px); } }

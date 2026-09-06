@@ -1,5 +1,5 @@
 <header class="site-header">
   <a class="header-left" href="{{ '/about.html' | relative_url }}" {% if page.page_class == 'about' %}aria-current="page"{% endif %}>about</a>
   <a class="header-center" href="{{ '/' | relative_url }}" {% if page.page_class == 'home' %}aria-current="page"{% endif %}>{{ site.title | escape }}</a>
-  <a class="header-right" href="{{ '/project.html' | relative_url }}" {% if page.page_class == 'projects' %}aria-current="page"{% endif %}>projects</a>
+  <a class="header-right" href="{{ '/project.html' | relative_url }}" {% if page.page_class == 'projects' or page.page_class == 'project-detail' %}aria-current="page"{% endif %}>projects</a>
 </header>

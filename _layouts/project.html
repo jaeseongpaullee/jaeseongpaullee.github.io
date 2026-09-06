@@ -1,0 +1,10 @@
+---
+layout: default
+---
+<article>
+  <p class="detail-back"><a href="{{ '/project.html' | relative_url }}">← {{ site.data.design_projects.title | escape | newline_to_br | replace: '<br />', ' ' | strip_newlines }}</a></p>
+  <header class="detail-heading"><h1 class="project-name">{{ page.title | escape }}</h1>
+  <p class="project-subtitle">{{ page.subtitle | escape }}</p><p class="project-meta">{{ page.year | escape }}{% if page.location != '' %} · {{ page.location | escape }}{% endif %}</p></header>
+  {% if page.cover and page.cover != '' %}<img class="project-cover" src="{{ page.cover | relative_url | escape }}" alt="{{ page.title | escape }}">{% endif %}
+  <div class="project-body">{{ content }}</div>
+</article>

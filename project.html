@@ -3,19 +3,18 @@ layout: default
 title: Projects
 page_class: projects
 ---
-<section class="projects-intro"><p class="projects-kicker">Project Index</p><h1 class="projects-title">Selected<br>Works</h1></section>
+<section class="projects-intro"><p class="projects-kicker">{{ site.data.design_projects.kicker_text | escape }}</p><h1 class="projects-title">{{ site.data.design_projects.title | escape | newline_to_br }}</h1></section>
 <section class="project-list" aria-label="Projects">
 {% assign projects = site.projects | where: 'published', true | sort: 'order' %}
 {% for project in projects %}
 <article class="project-entry" id="{{ project.slug | escape }}">
   {% case project.slug %}{% when 'bury-a-friend' %}<span id="bury" class="legacy-anchor"></span>{% when 'tongin-market' %}<span id="tongin" class="legacy-anchor"></span>{% endcase %}
-  <div class="project-item">
+  <a class="project-item" href="{{ project.url | relative_url }}">
     <div class="project-number">{% if forloop.index < 10 %}0{% endif %}{{ forloop.index }}</div>
     <div class="project-info"><h2 class="project-name">{{ project.title | escape }}</h2>{% if project.subtitle != '' %}<p class="project-subtitle">{{ project.subtitle | escape }}</p>{% endif %}</div>
     <div class="project-meta"><p>{{ project.year | escape }}</p><p>{{ project.location | escape | newline_to_br }}</p></div>
-  </div>
-  {% if project.cover and project.cover != '' %}<img class="project-cover" src="{{ project.cover | relative_url | escape }}" alt="{{ project.title | escape }}" loading="lazy">{% endif %}
-  {% assign body = project.content | strip %}{% if body != '' %}<div class="project-body">{{ project.content | markdownify }}</div>{% endif %}
+  </a>
+
 </article>
 {% endfor %}
 </section>

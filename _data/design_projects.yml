@@ -1,0 +1,34 @@
+kicker:
+  font: inherit
+  desktop: 12
+  mobile: 12
+  line_height: 1.55
+  letter_spacing: 0
+archive_title:
+  font: inherit
+  desktop: 90
+  mobile: 48
+  line_height: 1.05
+  letter_spacing: -0.05
+project_title:
+  font: inherit
+  desktop: 51
+  mobile: 34
+  line_height: 1.05
+  letter_spacing: -0.05
+subtitle:
+  font: inherit
+  desktop: 13
+  mobile: 13
+  line_height: 1.55
+  letter_spacing: 0
+meta:
+  font: inherit
+  desktop: 11
+  mobile: 11
+  line_height: 1.55
+  letter_spacing: 0
+title: 'Selected
+
+  Works'
+kicker_text: Project Index

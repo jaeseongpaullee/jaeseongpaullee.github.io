@@ -866,3 +866,32 @@ a {
   }
 
 }
+
+/* CMS-driven layouts */
+.home-intro h1 { margin: 0; font-weight: 400; }
+.work-image img { display: block; width: 100%; height: 100%; position: absolute; inset: 0; object-fit: cover; }
+.image-empty { position: absolute; left: 18px; bottom: 18px; font-size: 12px; color: #666; }
+.about-name { font-size: clamp(38px, 7vw, 112px); line-height: 1; overflow-wrap: anywhere; }
+.about-hero { min-height: 340px; }
+.project-item { grid-template-columns: 60px minmax(0, 1fr) minmax(100px, .35fr); }
+.project-name { line-height: 1.05; overflow-wrap: anywhere; }
+.project-entry, .legacy-anchor { scroll-margin-top: 85px; }
+.project-cover { display: block; width: 100%; height: auto; margin-bottom: 30px; }
+.project-body { max-width: 960px; margin: 0 auto 60px; line-height: 1.8; overflow-wrap: anywhere; }
+.project-body img, .project-body video { max-width: 100%; height: auto; }
+.project-body a, .contact-link { text-decoration: underline; text-underline-offset: 4px; }
+.project-body pre { overflow-x: auto; }
+.project-body table { display: block; overflow-x: auto; }
+.cv-content, .cv-year { overflow-wrap: anywhere; }
+.skip-link { position: fixed; left: 12px; top: -100px; z-index: 2000; background: white; padding: 12px; }
+.skip-link:focus { top: 10px; }
+a:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
+@media (max-width: 800px) {
+  .project-item { grid-template-columns: 35px minmax(0, 1fr); }
+  .about-hero { min-height: auto; }
+  .site-footer { gap: 20px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition: none !important; }
+}

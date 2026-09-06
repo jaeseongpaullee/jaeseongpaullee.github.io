@@ -1,31 +1,21 @@
-name_ko: "이재성"
-name_en: "JAESEONG PAUL LEE"
-
-intro: ""
-
+name_ko: 이재성
+name_en: JAESEONG PAUL LEE
 sections:
-  - title: "Education"
-    items: []
-
-  - title: "Experience"
-    items: []
-
-  - title: "Honors"
-    items: []
-
-  - title: "Activities"
-    items: []
-
-  - title: "Exhibitions"
-    items: []
-
-  - title: "Tools"
-    items: []
-
-  - title: "Language"
-    items: []
-
+  - title: Education
+    items:
+      - year: 2023 - Present
+        title: School of Architecture in Kyonggi University
+        description: B.Arch (Expected in 2027) / Minor in Civil Engineering
+      - year: 2019 - 2022
+        title: Department of Civil Engineering in Kyonggi University
+  - title: Experience
+    items:
+      - year: "2026"
+        title: TheM Architects & Engineers Co., Ltd. | Intern
+  - title: Honors
+  - title: Activities
+  - title: Exhibitions
+  - title: Tools
+  - title: Language
 contact:
-  email: ""
-
-  links: []
+  email: jslarchi0@gmail.com

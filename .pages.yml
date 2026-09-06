@@ -148,7 +148,7 @@ content:
       media: images
       rename: safe
 - name: design
-  label: 디자인 설정
+  label: 디자인 · 전체 폭과 폰트 등록
   type: file
   path: _data/design.yml
   format: yaml
@@ -174,20 +174,6 @@ content:
         label: 고딕 (Noto Sans KR)
       - name: serif
         label: 명조 (Noto Serif KR)
-  - name: text_scale
-    label: 본문·메뉴·캡션 글자 크기 (% · 기본 100)
-    type: number
-    required: true
-    options:
-      min: 85
-      max: 125
-  - name: heading_scale
-    label: 큰 제목·로고 글자 크기 (% · 기본 100)
-    type: number
-    required: true
-    options:
-      min: 75
-      max: 125
   - name: custom1
     label: 내 폰트 1 (WOFF2 파일)
     type: file
@@ -209,464 +195,1374 @@ content:
       media: fonts
       extensions:
       - woff2
-  - name: typography
-    label: 영역별 글꼴과 크기
+- name: design_common
+  label: 디자인 · 공통
+  type: file
+  path: _data/design_common.yml
+  format: yaml
+  operations:
+    delete: false
+  fields:
+  - name: logo
+    label: 로고 (초기 PC 38px / 모바일 25px)
     type: object
     fields:
-    - name: logo
-      label: 로고
-      type: object
-      fields:
-      - name: font
-        label: 폰트
-        type: select
-        options:
-          values: &id001
-          - name: inherit
-            label: 기존 설정 유지
-          - name: original
-            label: Inter Tight + Noto Sans KR
-          - name: sans
-            label: Noto Sans KR
-          - name: serif
-            label: Noto Serif KR
-          - name: mono
-            label: IBM Plex Mono
-          - name: custom1
-            label: 내 폰트 1
-          - name: custom2
-            label: 내 폰트 2
-          - name: custom3
-            label: 내 폰트 3
-      - name: desktop
-        label: PC 글자 크기 (px · 비우면 기존값)
-        type: number
-        options:
-          min: 10
-          max: 180
-      - name: mobile
-        label: 모바일 글자 크기 (px · 비우면 기존값)
-        type: number
-        options:
-          min: 10
-          max: 100
-    - name: menu
-      label: 메뉴
-      type: object
-      fields:
-      - name: font
-        label: 폰트
-        type: select
-        options:
-          values: *id001
-      - name: desktop
-        label: PC 글자 크기 (px · 비우면 기존값)
-        type: number
-        options:
-          min: 10
-          max: 180
-      - name: mobile
-        label: 모바일 글자 크기 (px · 비우면 기존값)
-        type: number
-        options:
-          min: 10
-          max: 100
-    - name: home_label
-      label: Home 안내
-      type: object
-      fields:
-      - name: font
-        label: 폰트
-        type: select
-        options:
-          values: *id001
-      - name: desktop
-        label: PC 글자 크기 (px · 비우면 기존값)
-        type: number
-        options:
-          min: 10
-          max: 180
-      - name: mobile
-        label: 모바일 글자 크기 (px · 비우면 기존값)
-        type: number
-        options:
-          min: 10
-          max: 100
-    - name: caption
-      label: 이미지 캡션 제목
-      type: object
-      fields:
-      - name: font
-        label: 폰트
-        type: select
-        options:
-          values: *id001
-      - name: desktop
-        label: PC 글자 크기 (px · 비우면 기존값)
-        type: number
-        options:
-          min: 10
-          max: 180
-      - name: mobile
-        label: 모바일 글자 크기 (px · 비우면 기존값)
-        type: number
-        options:
-          min: 10
-          max: 100
-    - name: numbers
-      label: Home 번호·연도
-      type: object
-      fields:
-      - name: font
-        label: 폰트
-        type: select
-        options:
-          values: *id001
-      - name: desktop
-        label: PC 글자 크기 (px · 비우면 기존값)
-        type: number
-        options:
-          min: 10
-          max: 180
-      - name: mobile
-        label: 모바일 글자 크기 (px · 비우면 기존값)
-        type: number
-        options:
-          min: 10
-          max: 100
-    - name: kicker
-      label: 페이지 안내 제목
-      type: object
-      fields:
-      - name: font
-        label: 폰트
-        type: select
-        options:
-          values: *id001
-      - name: desktop
-        label: PC 글자 크기 (px · 비우면 기존값)
-        type: number
-        options:
-          min: 10
-          max: 180
-      - name: mobile
-        label: 모바일 글자 크기 (px · 비우면 기존값)
-        type: number
-        options:
-          min: 10
-          max: 100
-    - name: english_name
-      label: About 영문 이름
-      type: object
-      fields:
-      - name: font
-        label: 폰트
-        type: select
-        options:
-          values: *id001
-      - name: desktop
-        label: PC 글자 크기 (px · 비우면 기존값)
-        type: number
-        options:
-          min: 10
-          max: 180
-      - name: mobile
-        label: 모바일 글자 크기 (px · 비우면 기존값)
-        type: number
-        options:
-          min: 10
-          max: 100
-    - name: korean_name
-      label: About 한글 이름
-      type: object
-      fields:
-      - name: font
-        label: 폰트
-        type: select
-        options:
-          values: *id001
-      - name: desktop
-        label: PC 글자 크기 (px · 비우면 기존값)
-        type: number
-        options:
-          min: 10
-          max: 180
-      - name: mobile
-        label: 모바일 글자 크기 (px · 비우면 기존값)
-        type: number
-        options:
-          min: 10
-          max: 100
-    - name: intro
-      label: About 자기소개
-      type: object
-      fields:
-      - name: font
-        label: 폰트
-        type: select
-        options:
-          values: *id001
-      - name: desktop
-        label: PC 글자 크기 (px · 비우면 기존값)
-        type: number
-        options:
-          min: 10
-          max: 180
-      - name: mobile
-        label: 모바일 글자 크기 (px · 비우면 기존값)
-        type: number
-        options:
-          min: 10
-          max: 100
-    - name: cv_section
-      label: CV 섹션 제목
-      type: object
-      fields:
-      - name: font
-        label: 폰트
-        type: select
-        options:
-          values: *id001
-      - name: desktop
-        label: PC 글자 크기 (px · 비우면 기존값)
-        type: number
-        options:
-          min: 10
-          max: 180
-      - name: mobile
-        label: 모바일 글자 크기 (px · 비우면 기존값)
-        type: number
-        options:
-          min: 10
-          max: 100
-    - name: cv_year
-      label: CV 연도
-      type: object
-      fields:
-      - name: font
-        label: 폰트
-        type: select
-        options:
-          values: *id001
-      - name: desktop
-        label: PC 글자 크기 (px · 비우면 기존값)
-        type: number
-        options:
-          min: 10
-          max: 180
-      - name: mobile
-        label: 모바일 글자 크기 (px · 비우면 기존값)
-        type: number
-        options:
-          min: 10
-          max: 100
-    - name: cv_title
-      label: CV 항목 제목
-      type: object
-      fields:
-      - name: font
-        label: 폰트
-        type: select
-        options:
-          values: *id001
-      - name: desktop
-        label: PC 글자 크기 (px · 비우면 기존값)
-        type: number
-        options:
-          min: 10
-          max: 180
-      - name: mobile
-        label: 모바일 글자 크기 (px · 비우면 기존값)
-        type: number
-        options:
-          min: 10
-          max: 100
-    - name: cv_body
-      label: CV 설명
-      type: object
-      fields:
-      - name: font
-        label: 폰트
-        type: select
-        options:
-          values: *id001
-      - name: desktop
-        label: PC 글자 크기 (px · 비우면 기존값)
-        type: number
-        options:
-          min: 10
-          max: 180
-      - name: mobile
-        label: 모바일 글자 크기 (px · 비우면 기존값)
-        type: number
-        options:
-          min: 10
-          max: 100
-    - name: contact
-      label: 연락처
-      type: object
-      fields:
-      - name: font
-        label: 폰트
-        type: select
-        options:
-          values: *id001
-      - name: desktop
-        label: PC 글자 크기 (px · 비우면 기존값)
-        type: number
-        options:
-          min: 10
-          max: 180
-      - name: mobile
-        label: 모바일 글자 크기 (px · 비우면 기존값)
-        type: number
-        options:
-          min: 10
-          max: 100
-    - name: archive_title
-      label: Projects 큰 제목
-      type: object
-      fields:
-      - name: font
-        label: 폰트
-        type: select
-        options:
-          values: *id001
-      - name: desktop
-        label: PC 글자 크기 (px · 비우면 기존값)
-        type: number
-        options:
-          min: 10
-          max: 180
-      - name: mobile
-        label: 모바일 글자 크기 (px · 비우면 기존값)
-        type: number
-        options:
-          min: 10
-          max: 100
-    - name: project_title
-      label: 프로젝트 제목
-      type: object
-      fields:
-      - name: font
-        label: 폰트
-        type: select
-        options:
-          values: *id001
-      - name: desktop
-        label: PC 글자 크기 (px · 비우면 기존값)
-        type: number
-        options:
-          min: 10
-          max: 180
-      - name: mobile
-        label: 모바일 글자 크기 (px · 비우면 기존값)
-        type: number
-        options:
-          min: 10
-          max: 100
-    - name: subtitle
-      label: 프로젝트 부제
-      type: object
-      fields:
-      - name: font
-        label: 폰트
-        type: select
-        options:
-          values: *id001
-      - name: desktop
-        label: PC 글자 크기 (px · 비우면 기존값)
-        type: number
-        options:
-          min: 10
-          max: 180
-      - name: mobile
-        label: 모바일 글자 크기 (px · 비우면 기존값)
-        type: number
-        options:
-          min: 10
-          max: 100
-    - name: meta
-      label: 프로젝트 번호·연도·위치
-      type: object
-      fields:
-      - name: font
-        label: 폰트
-        type: select
-        options:
-          values: *id001
-      - name: desktop
-        label: PC 글자 크기 (px · 비우면 기존값)
-        type: number
-        options:
-          min: 10
-          max: 180
-      - name: mobile
-        label: 모바일 글자 크기 (px · 비우면 기존값)
-        type: number
-        options:
-          min: 10
-          max: 100
-    - name: body
-      label: 프로젝트 본문
-      type: object
-      fields:
-      - name: font
-        label: 폰트
-        type: select
-        options:
-          values: *id001
-      - name: desktop
-        label: PC 글자 크기 (px · 비우면 기존값)
-        type: number
-        options:
-          min: 10
-          max: 180
-      - name: mobile
-        label: 모바일 글자 크기 (px · 비우면 기존값)
-        type: number
-        options:
-          min: 10
-          max: 100
-    - name: body_heading
-      label: 프로젝트 본문 소제목
-      type: object
-      fields:
-      - name: font
-        label: 폰트
-        type: select
-        options:
-          values: *id001
-      - name: desktop
-        label: PC 글자 크기 (px · 비우면 기존값)
-        type: number
-        options:
-          min: 10
-          max: 180
-      - name: mobile
-        label: 모바일 글자 크기 (px · 비우면 기존값)
-        type: number
-        options:
-          min: 10
-          max: 100
-    - name: footer
-      label: 푸터
-      type: object
-      fields:
-      - name: font
-        label: 폰트
-        type: select
-        options:
-          values: *id001
-      - name: desktop
-        label: PC 글자 크기 (px · 비우면 기존값)
-        type: number
-        options:
-          min: 10
-          max: 180
-      - name: mobile
-        label: 모바일 글자 크기 (px · 비우면 기존값)
-        type: number
-        options:
-          min: 10
-          max: 100
+    - name: font
+      label: 폰트
+      type: select
+      options:
+        values:
+        - name: inherit
+          label: 기존 설정 유지
+        - name: original
+          label: Inter Tight + Noto Sans KR
+        - name: sans
+          label: Noto Sans KR
+        - name: serif
+          label: Noto Serif KR
+        - name: mono
+          label: IBM Plex Mono
+        - name: custom1
+          label: 내 폰트 1
+        - name: custom2
+          label: 내 폰트 2
+        - name: custom3
+          label: 내 폰트 3
+    - name: desktop
+      label: PC 크기 (px)
+      type: number
+      options:
+        min: 10
+        max: 180
+      required: true
+    - name: mobile
+      label: 모바일 크기 (px)
+      type: number
+      options:
+        min: 10
+        max: 100
+      required: true
+    - name: line_height
+      label: 줄 간격 (배수)
+      type: number
+      required: true
+      options:
+        min: 0.8
+        max: 2.5
+    - name: letter_spacing
+      label: 자간 (em)
+      type: number
+      required: true
+      options:
+        min: -0.1
+        max: 0.2
+  - name: menu
+    label: 메뉴 (초기 PC 15px / 모바일 11px)
+    type: object
+    fields:
+    - name: font
+      label: 폰트
+      type: select
+      options:
+        values:
+        - name: inherit
+          label: 기존 설정 유지
+        - name: original
+          label: Inter Tight + Noto Sans KR
+        - name: sans
+          label: Noto Sans KR
+        - name: serif
+          label: Noto Serif KR
+        - name: mono
+          label: IBM Plex Mono
+        - name: custom1
+          label: 내 폰트 1
+        - name: custom2
+          label: 내 폰트 2
+        - name: custom3
+          label: 내 폰트 3
+    - name: desktop
+      label: PC 크기 (px)
+      type: number
+      options:
+        min: 10
+        max: 180
+      required: true
+    - name: mobile
+      label: 모바일 크기 (px)
+      type: number
+      options:
+        min: 10
+        max: 100
+      required: true
+    - name: line_height
+      label: 줄 간격 (배수)
+      type: number
+      required: true
+      options:
+        min: 0.8
+        max: 2.5
+    - name: letter_spacing
+      label: 자간 (em)
+      type: number
+      required: true
+      options:
+        min: -0.1
+        max: 0.2
+  - name: footer
+    label: 푸터 (초기 PC 10px / 모바일 10px)
+    type: object
+    fields:
+    - name: font
+      label: 폰트
+      type: select
+      options:
+        values:
+        - name: inherit
+          label: 기존 설정 유지
+        - name: original
+          label: Inter Tight + Noto Sans KR
+        - name: sans
+          label: Noto Sans KR
+        - name: serif
+          label: Noto Serif KR
+        - name: mono
+          label: IBM Plex Mono
+        - name: custom1
+          label: 내 폰트 1
+        - name: custom2
+          label: 내 폰트 2
+        - name: custom3
+          label: 내 폰트 3
+    - name: desktop
+      label: PC 크기 (px)
+      type: number
+      options:
+        min: 10
+        max: 180
+      required: true
+    - name: mobile
+      label: 모바일 크기 (px)
+      type: number
+      options:
+        min: 10
+        max: 100
+      required: true
+    - name: line_height
+      label: 줄 간격 (배수)
+      type: number
+      required: true
+      options:
+        min: 0.8
+        max: 2.5
+    - name: letter_spacing
+      label: 자간 (em)
+      type: number
+      required: true
+      options:
+        min: -0.1
+        max: 0.2
+- name: design_home
+  label: 디자인 · Home
+  type: file
+  path: _data/design_home.yml
+  format: yaml
+  operations:
+    delete: false
+  fields:
+  - name: home_label
+    label: Home 안내 (초기 PC 12px / 모바일 12px)
+    type: object
+    fields:
+    - name: font
+      label: 폰트
+      type: select
+      options:
+        values:
+        - name: inherit
+          label: 기존 설정 유지
+        - name: original
+          label: Inter Tight + Noto Sans KR
+        - name: sans
+          label: Noto Sans KR
+        - name: serif
+          label: Noto Serif KR
+        - name: mono
+          label: IBM Plex Mono
+        - name: custom1
+          label: 내 폰트 1
+        - name: custom2
+          label: 내 폰트 2
+        - name: custom3
+          label: 내 폰트 3
+    - name: desktop
+      label: PC 크기 (px)
+      type: number
+      options:
+        min: 10
+        max: 180
+      required: true
+    - name: mobile
+      label: 모바일 크기 (px)
+      type: number
+      options:
+        min: 10
+        max: 100
+      required: true
+    - name: line_height
+      label: 줄 간격 (배수)
+      type: number
+      required: true
+      options:
+        min: 0.8
+        max: 2.5
+    - name: letter_spacing
+      label: 자간 (em)
+      type: number
+      required: true
+      options:
+        min: -0.1
+        max: 0.2
+  - name: caption
+    label: 이미지 캡션 제목 (초기 PC 13px / 모바일 13px)
+    type: object
+    fields:
+    - name: font
+      label: 폰트
+      type: select
+      options:
+        values:
+        - name: inherit
+          label: 기존 설정 유지
+        - name: original
+          label: Inter Tight + Noto Sans KR
+        - name: sans
+          label: Noto Sans KR
+        - name: serif
+          label: Noto Serif KR
+        - name: mono
+          label: IBM Plex Mono
+        - name: custom1
+          label: 내 폰트 1
+        - name: custom2
+          label: 내 폰트 2
+        - name: custom3
+          label: 내 폰트 3
+    - name: desktop
+      label: PC 크기 (px)
+      type: number
+      options:
+        min: 10
+        max: 180
+      required: true
+    - name: mobile
+      label: 모바일 크기 (px)
+      type: number
+      options:
+        min: 10
+        max: 100
+      required: true
+    - name: line_height
+      label: 줄 간격 (배수)
+      type: number
+      required: true
+      options:
+        min: 0.8
+        max: 2.5
+    - name: letter_spacing
+      label: 자간 (em)
+      type: number
+      required: true
+      options:
+        min: -0.1
+        max: 0.2
+  - name: numbers
+    label: Home 번호·연도 (초기 PC 11px / 모바일 11px)
+    type: object
+    fields:
+    - name: font
+      label: 폰트
+      type: select
+      options:
+        values:
+        - name: inherit
+          label: 기존 설정 유지
+        - name: original
+          label: Inter Tight + Noto Sans KR
+        - name: sans
+          label: Noto Sans KR
+        - name: serif
+          label: Noto Serif KR
+        - name: mono
+          label: IBM Plex Mono
+        - name: custom1
+          label: 내 폰트 1
+        - name: custom2
+          label: 내 폰트 2
+        - name: custom3
+          label: 내 폰트 3
+    - name: desktop
+      label: PC 크기 (px)
+      type: number
+      options:
+        min: 10
+        max: 180
+      required: true
+    - name: mobile
+      label: 모바일 크기 (px)
+      type: number
+      options:
+        min: 10
+        max: 100
+      required: true
+    - name: line_height
+      label: 줄 간격 (배수)
+      type: number
+      required: true
+      options:
+        min: 0.8
+        max: 2.5
+    - name: letter_spacing
+      label: 자간 (em)
+      type: number
+      required: true
+      options:
+        min: -0.1
+        max: 0.2
+- name: design_about
+  label: 디자인 · About
+  type: file
+  path: _data/design_about.yml
+  format: yaml
+  operations:
+    delete: false
+  fields:
+  - name: kicker
+    label: 페이지 안내 제목 (초기 PC 12px / 모바일 12px)
+    type: object
+    fields:
+    - name: font
+      label: 폰트
+      type: select
+      options:
+        values:
+        - name: inherit
+          label: 기존 설정 유지
+        - name: original
+          label: Inter Tight + Noto Sans KR
+        - name: sans
+          label: Noto Sans KR
+        - name: serif
+          label: Noto Serif KR
+        - name: mono
+          label: IBM Plex Mono
+        - name: custom1
+          label: 내 폰트 1
+        - name: custom2
+          label: 내 폰트 2
+        - name: custom3
+          label: 내 폰트 3
+    - name: desktop
+      label: PC 크기 (px)
+      type: number
+      options:
+        min: 10
+        max: 180
+      required: true
+    - name: mobile
+      label: 모바일 크기 (px)
+      type: number
+      options:
+        min: 10
+        max: 100
+      required: true
+    - name: line_height
+      label: 줄 간격 (배수)
+      type: number
+      required: true
+      options:
+        min: 0.8
+        max: 2.5
+    - name: letter_spacing
+      label: 자간 (em)
+      type: number
+      required: true
+      options:
+        min: -0.1
+        max: 0.2
+  - name: english_name
+    label: About 영문 이름 (초기 PC 90px / 모바일 48px)
+    type: object
+    fields:
+    - name: font
+      label: 폰트
+      type: select
+      options:
+        values:
+        - name: inherit
+          label: 기존 설정 유지
+        - name: original
+          label: Inter Tight + Noto Sans KR
+        - name: sans
+          label: Noto Sans KR
+        - name: serif
+          label: Noto Serif KR
+        - name: mono
+          label: IBM Plex Mono
+        - name: custom1
+          label: 내 폰트 1
+        - name: custom2
+          label: 내 폰트 2
+        - name: custom3
+          label: 내 폰트 3
+    - name: desktop
+      label: PC 크기 (px)
+      type: number
+      options:
+        min: 10
+        max: 180
+      required: true
+    - name: mobile
+      label: 모바일 크기 (px)
+      type: number
+      options:
+        min: 10
+        max: 100
+      required: true
+    - name: line_height
+      label: 줄 간격 (배수)
+      type: number
+      required: true
+      options:
+        min: 0.8
+        max: 2.5
+    - name: letter_spacing
+      label: 자간 (em)
+      type: number
+      required: true
+      options:
+        min: -0.1
+        max: 0.2
+  - name: korean_name
+    label: About 한글 이름 (초기 PC 16px / 모바일 16px)
+    type: object
+    fields:
+    - name: font
+      label: 폰트
+      type: select
+      options:
+        values:
+        - name: inherit
+          label: 기존 설정 유지
+        - name: original
+          label: Inter Tight + Noto Sans KR
+        - name: sans
+          label: Noto Sans KR
+        - name: serif
+          label: Noto Serif KR
+        - name: mono
+          label: IBM Plex Mono
+        - name: custom1
+          label: 내 폰트 1
+        - name: custom2
+          label: 내 폰트 2
+        - name: custom3
+          label: 내 폰트 3
+    - name: desktop
+      label: PC 크기 (px)
+      type: number
+      options:
+        min: 10
+        max: 180
+      required: true
+    - name: mobile
+      label: 모바일 크기 (px)
+      type: number
+      options:
+        min: 10
+        max: 100
+      required: true
+    - name: line_height
+      label: 줄 간격 (배수)
+      type: number
+      required: true
+      options:
+        min: 0.8
+        max: 2.5
+    - name: letter_spacing
+      label: 자간 (em)
+      type: number
+      required: true
+      options:
+        min: -0.1
+        max: 0.2
+  - name: intro
+    label: About 자기소개 (초기 PC 22px / 모바일 18px)
+    type: object
+    fields:
+    - name: font
+      label: 폰트
+      type: select
+      options:
+        values:
+        - name: inherit
+          label: 기존 설정 유지
+        - name: original
+          label: Inter Tight + Noto Sans KR
+        - name: sans
+          label: Noto Sans KR
+        - name: serif
+          label: Noto Serif KR
+        - name: mono
+          label: IBM Plex Mono
+        - name: custom1
+          label: 내 폰트 1
+        - name: custom2
+          label: 내 폰트 2
+        - name: custom3
+          label: 내 폰트 3
+    - name: desktop
+      label: PC 크기 (px)
+      type: number
+      options:
+        min: 10
+        max: 180
+      required: true
+    - name: mobile
+      label: 모바일 크기 (px)
+      type: number
+      options:
+        min: 10
+        max: 100
+      required: true
+    - name: line_height
+      label: 줄 간격 (배수)
+      type: number
+      required: true
+      options:
+        min: 0.8
+        max: 2.5
+    - name: letter_spacing
+      label: 자간 (em)
+      type: number
+      required: true
+      options:
+        min: -0.1
+        max: 0.2
+  - name: cv_section
+    label: CV 섹션 제목 (초기 PC 11px / 모바일 11px)
+    type: object
+    fields:
+    - name: font
+      label: 폰트
+      type: select
+      options:
+        values:
+        - name: inherit
+          label: 기존 설정 유지
+        - name: original
+          label: Inter Tight + Noto Sans KR
+        - name: sans
+          label: Noto Sans KR
+        - name: serif
+          label: Noto Serif KR
+        - name: mono
+          label: IBM Plex Mono
+        - name: custom1
+          label: 내 폰트 1
+        - name: custom2
+          label: 내 폰트 2
+        - name: custom3
+          label: 내 폰트 3
+    - name: desktop
+      label: PC 크기 (px)
+      type: number
+      options:
+        min: 10
+        max: 180
+      required: true
+    - name: mobile
+      label: 모바일 크기 (px)
+      type: number
+      options:
+        min: 10
+        max: 100
+      required: true
+    - name: line_height
+      label: 줄 간격 (배수)
+      type: number
+      required: true
+      options:
+        min: 0.8
+        max: 2.5
+    - name: letter_spacing
+      label: 자간 (em)
+      type: number
+      required: true
+      options:
+        min: -0.1
+        max: 0.2
+  - name: cv_year
+    label: CV 연도 (초기 PC 11px / 모바일 11px)
+    type: object
+    fields:
+    - name: font
+      label: 폰트
+      type: select
+      options:
+        values:
+        - name: inherit
+          label: 기존 설정 유지
+        - name: original
+          label: Inter Tight + Noto Sans KR
+        - name: sans
+          label: Noto Sans KR
+        - name: serif
+          label: Noto Serif KR
+        - name: mono
+          label: IBM Plex Mono
+        - name: custom1
+          label: 내 폰트 1
+        - name: custom2
+          label: 내 폰트 2
+        - name: custom3
+          label: 내 폰트 3
+    - name: desktop
+      label: PC 크기 (px)
+      type: number
+      options:
+        min: 10
+        max: 180
+      required: true
+    - name: mobile
+      label: 모바일 크기 (px)
+      type: number
+      options:
+        min: 10
+        max: 100
+      required: true
+    - name: line_height
+      label: 줄 간격 (배수)
+      type: number
+      required: true
+      options:
+        min: 0.8
+        max: 2.5
+    - name: letter_spacing
+      label: 자간 (em)
+      type: number
+      required: true
+      options:
+        min: -0.1
+        max: 0.2
+  - name: cv_title
+    label: CV 항목 제목 (초기 PC 15px / 모바일 15px)
+    type: object
+    fields:
+    - name: font
+      label: 폰트
+      type: select
+      options:
+        values:
+        - name: inherit
+          label: 기존 설정 유지
+        - name: original
+          label: Inter Tight + Noto Sans KR
+        - name: sans
+          label: Noto Sans KR
+        - name: serif
+          label: Noto Serif KR
+        - name: mono
+          label: IBM Plex Mono
+        - name: custom1
+          label: 내 폰트 1
+        - name: custom2
+          label: 내 폰트 2
+        - name: custom3
+          label: 내 폰트 3
+    - name: desktop
+      label: PC 크기 (px)
+      type: number
+      options:
+        min: 10
+        max: 180
+      required: true
+    - name: mobile
+      label: 모바일 크기 (px)
+      type: number
+      options:
+        min: 10
+        max: 100
+      required: true
+    - name: line_height
+      label: 줄 간격 (배수)
+      type: number
+      required: true
+      options:
+        min: 0.8
+        max: 2.5
+    - name: letter_spacing
+      label: 자간 (em)
+      type: number
+      required: true
+      options:
+        min: -0.1
+        max: 0.2
+  - name: cv_body
+    label: CV 설명 (초기 PC 13px / 모바일 13px)
+    type: object
+    fields:
+    - name: font
+      label: 폰트
+      type: select
+      options:
+        values:
+        - name: inherit
+          label: 기존 설정 유지
+        - name: original
+          label: Inter Tight + Noto Sans KR
+        - name: sans
+          label: Noto Sans KR
+        - name: serif
+          label: Noto Serif KR
+        - name: mono
+          label: IBM Plex Mono
+        - name: custom1
+          label: 내 폰트 1
+        - name: custom2
+          label: 내 폰트 2
+        - name: custom3
+          label: 내 폰트 3
+    - name: desktop
+      label: PC 크기 (px)
+      type: number
+      options:
+        min: 10
+        max: 180
+      required: true
+    - name: mobile
+      label: 모바일 크기 (px)
+      type: number
+      options:
+        min: 10
+        max: 100
+      required: true
+    - name: line_height
+      label: 줄 간격 (배수)
+      type: number
+      required: true
+      options:
+        min: 0.8
+        max: 2.5
+    - name: letter_spacing
+      label: 자간 (em)
+      type: number
+      required: true
+      options:
+        min: -0.1
+        max: 0.2
+  - name: contact
+    label: 연락처 (초기 PC 38px / 모바일 25px)
+    type: object
+    fields:
+    - name: font
+      label: 폰트
+      type: select
+      options:
+        values:
+        - name: inherit
+          label: 기존 설정 유지
+        - name: original
+          label: Inter Tight + Noto Sans KR
+        - name: sans
+          label: Noto Sans KR
+        - name: serif
+          label: Noto Serif KR
+        - name: mono
+          label: IBM Plex Mono
+        - name: custom1
+          label: 내 폰트 1
+        - name: custom2
+          label: 내 폰트 2
+        - name: custom3
+          label: 내 폰트 3
+    - name: desktop
+      label: PC 크기 (px)
+      type: number
+      options:
+        min: 10
+        max: 180
+      required: true
+    - name: mobile
+      label: 모바일 크기 (px)
+      type: number
+      options:
+        min: 10
+        max: 100
+      required: true
+    - name: line_height
+      label: 줄 간격 (배수)
+      type: number
+      required: true
+      options:
+        min: 0.8
+        max: 2.5
+    - name: letter_spacing
+      label: 자간 (em)
+      type: number
+      required: true
+      options:
+        min: -0.1
+        max: 0.2
+- name: design_projects
+  label: 디자인 · Projects 목록
+  type: file
+  path: _data/design_projects.yml
+  format: yaml
+  operations:
+    delete: false
+  fields:
+  - name: title
+    label: 페이지 큰 제목 (줄바꿈 가능)
+    type: text
+  - name: kicker_text
+    label: 페이지 안내 문구
+    type: string
+  - name: kicker
+    label: 페이지 안내 제목 (초기 PC 12px / 모바일 12px)
+    type: object
+    fields:
+    - name: font
+      label: 폰트
+      type: select
+      options:
+        values:
+        - name: inherit
+          label: 기존 설정 유지
+        - name: original
+          label: Inter Tight + Noto Sans KR
+        - name: sans
+          label: Noto Sans KR
+        - name: serif
+          label: Noto Serif KR
+        - name: mono
+          label: IBM Plex Mono
+        - name: custom1
+          label: 내 폰트 1
+        - name: custom2
+          label: 내 폰트 2
+        - name: custom3
+          label: 내 폰트 3
+    - name: desktop
+      label: PC 크기 (px)
+      type: number
+      options:
+        min: 10
+        max: 180
+      required: true
+    - name: mobile
+      label: 모바일 크기 (px)
+      type: number
+      options:
+        min: 10
+        max: 100
+      required: true
+    - name: line_height
+      label: 줄 간격 (배수)
+      type: number
+      required: true
+      options:
+        min: 0.8
+        max: 2.5
+    - name: letter_spacing
+      label: 자간 (em)
+      type: number
+      required: true
+      options:
+        min: -0.1
+        max: 0.2
+  - name: archive_title
+    label: Projects 큰 제목 (초기 PC 90px / 모바일 48px)
+    type: object
+    fields:
+    - name: font
+      label: 폰트
+      type: select
+      options:
+        values:
+        - name: inherit
+          label: 기존 설정 유지
+        - name: original
+          label: Inter Tight + Noto Sans KR
+        - name: sans
+          label: Noto Sans KR
+        - name: serif
+          label: Noto Serif KR
+        - name: mono
+          label: IBM Plex Mono
+        - name: custom1
+          label: 내 폰트 1
+        - name: custom2
+          label: 내 폰트 2
+        - name: custom3
+          label: 내 폰트 3
+    - name: desktop
+      label: PC 크기 (px)
+      type: number
+      options:
+        min: 10
+        max: 180
+      required: true
+    - name: mobile
+      label: 모바일 크기 (px)
+      type: number
+      options:
+        min: 10
+        max: 100
+      required: true
+    - name: line_height
+      label: 줄 간격 (배수)
+      type: number
+      required: true
+      options:
+        min: 0.8
+        max: 2.5
+    - name: letter_spacing
+      label: 자간 (em)
+      type: number
+      required: true
+      options:
+        min: -0.1
+        max: 0.2
+  - name: project_title
+    label: 프로젝트 제목 (초기 PC 51px / 모바일 34px)
+    type: object
+    fields:
+    - name: font
+      label: 폰트
+      type: select
+      options:
+        values:
+        - name: inherit
+          label: 기존 설정 유지
+        - name: original
+          label: Inter Tight + Noto Sans KR
+        - name: sans
+          label: Noto Sans KR
+        - name: serif
+          label: Noto Serif KR
+        - name: mono
+          label: IBM Plex Mono
+        - name: custom1
+          label: 내 폰트 1
+        - name: custom2
+          label: 내 폰트 2
+        - name: custom3
+          label: 내 폰트 3
+    - name: desktop
+      label: PC 크기 (px)
+      type: number
+      options:
+        min: 10
+        max: 180
+      required: true
+    - name: mobile
+      label: 모바일 크기 (px)
+      type: number
+      options:
+        min: 10
+        max: 100
+      required: true
+    - name: line_height
+      label: 줄 간격 (배수)
+      type: number
+      required: true
+      options:
+        min: 0.8
+        max: 2.5
+    - name: letter_spacing
+      label: 자간 (em)
+      type: number
+      required: true
+      options:
+        min: -0.1
+        max: 0.2
+  - name: subtitle
+    label: 프로젝트 부제 (초기 PC 13px / 모바일 13px)
+    type: object
+    fields:
+    - name: font
+      label: 폰트
+      type: select
+      options:
+        values:
+        - name: inherit
+          label: 기존 설정 유지
+        - name: original
+          label: Inter Tight + Noto Sans KR
+        - name: sans
+          label: Noto Sans KR
+        - name: serif
+          label: Noto Serif KR
+        - name: mono
+          label: IBM Plex Mono
+        - name: custom1
+          label: 내 폰트 1
+        - name: custom2
+          label: 내 폰트 2
+        - name: custom3
+          label: 내 폰트 3
+    - name: desktop
+      label: PC 크기 (px)
+      type: number
+      options:
+        min: 10
+        max: 180
+      required: true
+    - name: mobile
+      label: 모바일 크기 (px)
+      type: number
+      options:
+        min: 10
+        max: 100
+      required: true
+    - name: line_height
+      label: 줄 간격 (배수)
+      type: number
+      required: true
+      options:
+        min: 0.8
+        max: 2.5
+    - name: letter_spacing
+      label: 자간 (em)
+      type: number
+      required: true
+      options:
+        min: -0.1
+        max: 0.2
+  - name: meta
+    label: 프로젝트 번호·연도·위치 (초기 PC 11px / 모바일 11px)
+    type: object
+    fields:
+    - name: font
+      label: 폰트
+      type: select
+      options:
+        values:
+        - name: inherit
+          label: 기존 설정 유지
+        - name: original
+          label: Inter Tight + Noto Sans KR
+        - name: sans
+          label: Noto Sans KR
+        - name: serif
+          label: Noto Serif KR
+        - name: mono
+          label: IBM Plex Mono
+        - name: custom1
+          label: 내 폰트 1
+        - name: custom2
+          label: 내 폰트 2
+        - name: custom3
+          label: 내 폰트 3
+    - name: desktop
+      label: PC 크기 (px)
+      type: number
+      options:
+        min: 10
+        max: 180
+      required: true
+    - name: mobile
+      label: 모바일 크기 (px)
+      type: number
+      options:
+        min: 10
+        max: 100
+      required: true
+    - name: line_height
+      label: 줄 간격 (배수)
+      type: number
+      required: true
+      options:
+        min: 0.8
+        max: 2.5
+    - name: letter_spacing
+      label: 자간 (em)
+      type: number
+      required: true
+      options:
+        min: -0.1
+        max: 0.2
+- name: design_detail
+  label: 디자인 · 프로젝트 상세
+  type: file
+  path: _data/design_detail.yml
+  format: yaml
+  operations:
+    delete: false
+  fields:
+  - name: project_title
+    label: 프로젝트 제목 (초기 PC 51px / 모바일 34px)
+    type: object
+    fields:
+    - name: font
+      label: 폰트
+      type: select
+      options:
+        values:
+        - name: inherit
+          label: 기존 설정 유지
+        - name: original
+          label: Inter Tight + Noto Sans KR
+        - name: sans
+          label: Noto Sans KR
+        - name: serif
+          label: Noto Serif KR
+        - name: mono
+          label: IBM Plex Mono
+        - name: custom1
+          label: 내 폰트 1
+        - name: custom2
+          label: 내 폰트 2
+        - name: custom3
+          label: 내 폰트 3
+    - name: desktop
+      label: PC 크기 (px)
+      type: number
+      options:
+        min: 10
+        max: 180
+      required: true
+    - name: mobile
+      label: 모바일 크기 (px)
+      type: number
+      options:
+        min: 10
+        max: 100
+      required: true
+    - name: line_height
+      label: 줄 간격 (배수)
+      type: number
+      required: true
+      options:
+        min: 0.8
+        max: 2.5
+    - name: letter_spacing
+      label: 자간 (em)
+      type: number
+      required: true
+      options:
+        min: -0.1
+        max: 0.2
+  - name: subtitle
+    label: 프로젝트 부제 (초기 PC 13px / 모바일 13px)
+    type: object
+    fields:
+    - name: font
+      label: 폰트
+      type: select
+      options:
+        values:
+        - name: inherit
+          label: 기존 설정 유지
+        - name: original
+          label: Inter Tight + Noto Sans KR
+        - name: sans
+          label: Noto Sans KR
+        - name: serif
+          label: Noto Serif KR
+        - name: mono
+          label: IBM Plex Mono
+        - name: custom1
+          label: 내 폰트 1
+        - name: custom2
+          label: 내 폰트 2
+        - name: custom3
+          label: 내 폰트 3
+    - name: desktop
+      label: PC 크기 (px)
+      type: number
+      options:
+        min: 10
+        max: 180
+      required: true
+    - name: mobile
+      label: 모바일 크기 (px)
+      type: number
+      options:
+        min: 10
+        max: 100
+      required: true
+    - name: line_height
+      label: 줄 간격 (배수)
+      type: number
+      required: true
+      options:
+        min: 0.8
+        max: 2.5
+    - name: letter_spacing
+      label: 자간 (em)
+      type: number
+      required: true
+      options:
+        min: -0.1
+        max: 0.2
+  - name: meta
+    label: 프로젝트 번호·연도·위치 (초기 PC 11px / 모바일 11px)
+    type: object
+    fields:
+    - name: font
+      label: 폰트
+      type: select
+      options:
+        values:
+        - name: inherit
+          label: 기존 설정 유지
+        - name: original
+          label: Inter Tight + Noto Sans KR
+        - name: sans
+          label: Noto Sans KR
+        - name: serif
+          label: Noto Serif KR
+        - name: mono
+          label: IBM Plex Mono
+        - name: custom1
+          label: 내 폰트 1
+        - name: custom2
+          label: 내 폰트 2
+        - name: custom3
+          label: 내 폰트 3
+    - name: desktop
+      label: PC 크기 (px)
+      type: number
+      options:
+        min: 10
+        max: 180
+      required: true
+    - name: mobile
+      label: 모바일 크기 (px)
+      type: number
+      options:
+        min: 10
+        max: 100
+      required: true
+    - name: line_height
+      label: 줄 간격 (배수)
+      type: number
+      required: true
+      options:
+        min: 0.8
+        max: 2.5
+    - name: letter_spacing
+      label: 자간 (em)
+      type: number
+      required: true
+      options:
+        min: -0.1
+        max: 0.2
+  - name: body
+    label: 프로젝트 본문 (초기 PC 16px / 모바일 16px)
+    type: object
+    fields:
+    - name: font
+      label: 폰트
+      type: select
+      options:
+        values:
+        - name: inherit
+          label: 기존 설정 유지
+        - name: original
+          label: Inter Tight + Noto Sans KR
+        - name: sans
+          label: Noto Sans KR
+        - name: serif
+          label: Noto Serif KR
+        - name: mono
+          label: IBM Plex Mono
+        - name: custom1
+          label: 내 폰트 1
+        - name: custom2
+          label: 내 폰트 2
+        - name: custom3
+          label: 내 폰트 3
+    - name: desktop
+      label: PC 크기 (px)
+      type: number
+      options:
+        min: 10
+        max: 180
+      required: true
+    - name: mobile
+      label: 모바일 크기 (px)
+      type: number
+      options:
+        min: 10
+        max: 100
+      required: true
+    - name: line_height
+      label: 줄 간격 (배수)
+      type: number
+      required: true
+      options:
+        min: 0.8
+        max: 2.5
+    - name: letter_spacing
+      label: 자간 (em)
+      type: number
+      required: true
+      options:
+        min: -0.1
+        max: 0.2
+  - name: body_heading
+    label: 프로젝트 본문 소제목 (초기 PC 28px / 모바일 24px)
+    type: object
+    fields:
+    - name: font
+      label: 폰트
+      type: select
+      options:
+        values:
+        - name: inherit
+          label: 기존 설정 유지
+        - name: original
+          label: Inter Tight + Noto Sans KR
+        - name: sans
+          label: Noto Sans KR
+        - name: serif
+          label: Noto Serif KR
+        - name: mono
+          label: IBM Plex Mono
+        - name: custom1
+          label: 내 폰트 1
+        - name: custom2
+          label: 내 폰트 2
+        - name: custom3
+          label: 내 폰트 3
+    - name: desktop
+      label: PC 크기 (px)
+      type: number
+      options:
+        min: 10
+        max: 180
+      required: true
+    - name: mobile
+      label: 모바일 크기 (px)
+      type: number
+      options:
+        min: 10
+        max: 100
+      required: true
+    - name: line_height
+      label: 줄 간격 (배수)
+      type: number
+      required: true
+      options:
+        min: 0.8
+        max: 2.5
+    - name: letter_spacing
+      label: 자간 (em)
+      type: number
+      required: true
+      options:
+        min: -0.1
+        max: 0.2

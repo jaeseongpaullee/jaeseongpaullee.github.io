@@ -6,7 +6,7 @@ page_class: about
 {% assign profile = site.data.profile %}
 <section class="about-hero">
   <p class="about-kicker">About</p>
-  <div><h1 class="about-name">{{ profile.name_en | escape }}</h1><p>{{ profile.name_ko | escape }}</p>
+  <div><h1 class="about-name">{{ profile.name_en | escape | newline_to_br }}</h1><p class="about-name-ko">{{ profile.name_ko | escape }}</p>
   {% if profile.intro and profile.intro != '' %}<p class="about-description">{{ profile.intro | escape | newline_to_br }}</p>{% endif %}</div>
 </section>
 {% for section in profile.sections %}

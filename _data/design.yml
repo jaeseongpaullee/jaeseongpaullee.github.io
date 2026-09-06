@@ -2,3 +2,46 @@ content_width: 1120
 font: original
 text_scale: 100
 heading_scale: 100
+typography:
+  logo:
+    font: inherit
+  menu:
+    font: inherit
+  home_label:
+    font: inherit
+  caption:
+    font: inherit
+  numbers:
+    font: inherit
+  kicker:
+    font: inherit
+  english_name:
+    font: inherit
+  korean_name:
+    font: inherit
+  intro:
+    font: inherit
+  cv_section:
+    font: inherit
+  cv_year:
+    font: inherit
+  cv_title:
+    font: inherit
+  cv_body:
+    font: inherit
+  contact:
+    font: inherit
+  archive_title:
+    font: inherit
+  project_title:
+    font: inherit
+  subtitle:
+    font: inherit
+  meta:
+    font: inherit
+  body:
+    font: inherit
+  body_heading:
+    font: inherit
+  footer:
+    font: inherit

@@ -35,6 +35,12 @@ sections:
         description: Excellence prize, Architecture Drawing I
   - title: Activities
   - title: Exhibitions
+    items:
+      - year: 2026 Jul.
+        title: 2026 SAK Graduation Exhibition
+      - year: 2025 Sep. - Oct.
+        title: "《Behind: Architalk》"
+        description: Kyonggi University Sosung Museum, Lead Artist & Exhibition Director
   - title: Tools
     items:
       - title: Revit | SketchUP | Rhino

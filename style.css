@@ -713,3 +713,45 @@ a {
 
   letter-spacing: 0.08em;
 }
+
+@media (max-width: 760px) {
+
+  .site-header {
+    width: calc(100% - 20px);
+    margin: 0 10px;
+
+    height: 54px;
+  }
+
+
+  .site-logo {
+    font-size: 24px;
+  }
+
+
+  .nav-left,
+  .nav-right {
+    font-size: 13px;
+  }
+
+
+  .home-gallery {
+    grid-template-columns: 1fr;
+
+    gap: 10px;
+
+    padding:
+      20px
+      10px
+      50px;
+  }
+
+
+  .home-image,
+  .home-image-wide {
+    grid-column: auto;
+
+    aspect-ratio: 4 / 3;
+  }
+
+}

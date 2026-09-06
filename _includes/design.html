@@ -31,7 +31,7 @@
 {% if design.custom3 and design.custom3 != '' %}
 @font-face { font-family: 'PortfolioCustom3'; src: url('{{ design.custom3 | relative_url | url_encode | replace: '%2F', '/' | replace: '+', '%20' }}') format('woff2'); font-display: swap; }
 {% endif %}
-{% assign t = design.typography.logo %}
+{% assign t = site.data.design_common.logo %}
 .header-center {
 {% case t.font %}
 {% when 'original' %}font-family: 'Inter Tight', 'Noto Sans KR', sans-serif;
@@ -42,12 +42,12 @@
 {% when 'custom2' %}font-family: 'PortfolioCustom2', 'Noto Sans KR', sans-serif;
 {% when 'custom3' %}font-family: 'PortfolioCustom3', 'Noto Sans KR', sans-serif;
 {% endcase %}
-{% if t.desktop and t.desktop != '' %}font-size: {{ t.desktop | plus: 0 | at_least: 10 | at_most: 180 }}px;{% endif %}
+font-size: {{ t.desktop | default: 38 | plus: 0 | at_least: 10 | at_most: 180 }}px;
+line-height: {{ t.line_height | default: 1.55 | plus: 0 | at_least: 0.8 | at_most: 2.5 }};
+letter-spacing: {{ t.letter_spacing | default: 0 | plus: 0 | at_least: -0.1 | at_most: 0.2 }}em;
 }
-@media (max-width: 800px) { .header-center {
-{% if t.mobile and t.mobile != '' %}font-size: {{ t.mobile | plus: 0 | at_least: 10 | at_most: 100 }}px;{% elsif t.desktop and t.desktop != '' %}font-size: min({{ t.desktop | plus: 0 | at_least: 10 | at_most: 180 }}px, 8vw);{% endif %}
-} }
-{% assign t = design.typography.menu %}
+@media(max-width:800px){.header-center {font-size: {{ t.mobile | default: 25 | plus: 0 | at_least: 10 | at_most: 100 }}px;}}
+{% assign t = site.data.design_common.menu %}
 .header-left, .header-right {
 {% case t.font %}
 {% when 'original' %}font-family: 'Inter Tight', 'Noto Sans KR', sans-serif;
@@ -58,300 +58,12 @@
 {% when 'custom2' %}font-family: 'PortfolioCustom2', 'Noto Sans KR', sans-serif;
 {% when 'custom3' %}font-family: 'PortfolioCustom3', 'Noto Sans KR', sans-serif;
 {% endcase %}
-{% if t.desktop and t.desktop != '' %}font-size: {{ t.desktop | plus: 0 | at_least: 10 | at_most: 180 }}px;{% endif %}
+font-size: {{ t.desktop | default: 15 | plus: 0 | at_least: 10 | at_most: 180 }}px;
+line-height: {{ t.line_height | default: 1.55 | plus: 0 | at_least: 0.8 | at_most: 2.5 }};
+letter-spacing: {{ t.letter_spacing | default: 0 | plus: 0 | at_least: -0.1 | at_most: 0.2 }}em;
 }
-@media (max-width: 800px) { .header-left, .header-right {
-{% if t.mobile and t.mobile != '' %}font-size: {{ t.mobile | plus: 0 | at_least: 10 | at_most: 100 }}px;{% elsif t.desktop and t.desktop != '' %}font-size: min({{ t.desktop | plus: 0 | at_least: 10 | at_most: 180 }}px, 8vw);{% endif %}
-} }
-{% assign t = design.typography.home_label %}
-.home-intro-left, .home-intro-right {
-{% case t.font %}
-{% when 'original' %}font-family: 'Inter Tight', 'Noto Sans KR', sans-serif;
-{% when 'sans' %}font-family: 'Noto Sans KR', sans-serif;
-{% when 'serif' %}font-family: 'Noto Serif KR', serif;
-{% when 'mono' %}font-family: 'IBM Plex Mono', 'Noto Sans KR', monospace;
-{% when 'custom1' %}font-family: 'PortfolioCustom1', 'Noto Sans KR', sans-serif;
-{% when 'custom2' %}font-family: 'PortfolioCustom2', 'Noto Sans KR', sans-serif;
-{% when 'custom3' %}font-family: 'PortfolioCustom3', 'Noto Sans KR', sans-serif;
-{% endcase %}
-{% if t.desktop and t.desktop != '' %}font-size: {{ t.desktop | plus: 0 | at_least: 10 | at_most: 180 }}px;{% endif %}
-}
-@media (max-width: 800px) { .home-intro-left, .home-intro-right {
-{% if t.mobile and t.mobile != '' %}font-size: {{ t.mobile | plus: 0 | at_least: 10 | at_most: 100 }}px;{% elsif t.desktop and t.desktop != '' %}font-size: min({{ t.desktop | plus: 0 | at_least: 10 | at_most: 180 }}px, 8vw);{% endif %}
-} }
-{% assign t = design.typography.caption %}
-.work-title, .image-empty {
-{% case t.font %}
-{% when 'original' %}font-family: 'Inter Tight', 'Noto Sans KR', sans-serif;
-{% when 'sans' %}font-family: 'Noto Sans KR', sans-serif;
-{% when 'serif' %}font-family: 'Noto Serif KR', serif;
-{% when 'mono' %}font-family: 'IBM Plex Mono', 'Noto Sans KR', monospace;
-{% when 'custom1' %}font-family: 'PortfolioCustom1', 'Noto Sans KR', sans-serif;
-{% when 'custom2' %}font-family: 'PortfolioCustom2', 'Noto Sans KR', sans-serif;
-{% when 'custom3' %}font-family: 'PortfolioCustom3', 'Noto Sans KR', sans-serif;
-{% endcase %}
-{% if t.desktop and t.desktop != '' %}font-size: {{ t.desktop | plus: 0 | at_least: 10 | at_most: 180 }}px;{% endif %}
-}
-@media (max-width: 800px) { .work-title, .image-empty {
-{% if t.mobile and t.mobile != '' %}font-size: {{ t.mobile | plus: 0 | at_least: 10 | at_most: 100 }}px;{% elsif t.desktop and t.desktop != '' %}font-size: min({{ t.desktop | plus: 0 | at_least: 10 | at_most: 180 }}px, 8vw);{% endif %}
-} }
-{% assign t = design.typography.numbers %}
-.work-number, .work-year {
-{% case t.font %}
-{% when 'original' %}font-family: 'Inter Tight', 'Noto Sans KR', sans-serif;
-{% when 'sans' %}font-family: 'Noto Sans KR', sans-serif;
-{% when 'serif' %}font-family: 'Noto Serif KR', serif;
-{% when 'mono' %}font-family: 'IBM Plex Mono', 'Noto Sans KR', monospace;
-{% when 'custom1' %}font-family: 'PortfolioCustom1', 'Noto Sans KR', sans-serif;
-{% when 'custom2' %}font-family: 'PortfolioCustom2', 'Noto Sans KR', sans-serif;
-{% when 'custom3' %}font-family: 'PortfolioCustom3', 'Noto Sans KR', sans-serif;
-{% endcase %}
-{% if t.desktop and t.desktop != '' %}font-size: {{ t.desktop | plus: 0 | at_least: 10 | at_most: 180 }}px;{% endif %}
-}
-@media (max-width: 800px) { .work-number, .work-year {
-{% if t.mobile and t.mobile != '' %}font-size: {{ t.mobile | plus: 0 | at_least: 10 | at_most: 100 }}px;{% elsif t.desktop and t.desktop != '' %}font-size: min({{ t.desktop | plus: 0 | at_least: 10 | at_most: 180 }}px, 8vw);{% endif %}
-} }
-{% assign t = design.typography.kicker %}
-.about-kicker, .projects-kicker {
-{% case t.font %}
-{% when 'original' %}font-family: 'Inter Tight', 'Noto Sans KR', sans-serif;
-{% when 'sans' %}font-family: 'Noto Sans KR', sans-serif;
-{% when 'serif' %}font-family: 'Noto Serif KR', serif;
-{% when 'mono' %}font-family: 'IBM Plex Mono', 'Noto Sans KR', monospace;
-{% when 'custom1' %}font-family: 'PortfolioCustom1', 'Noto Sans KR', sans-serif;
-{% when 'custom2' %}font-family: 'PortfolioCustom2', 'Noto Sans KR', sans-serif;
-{% when 'custom3' %}font-family: 'PortfolioCustom3', 'Noto Sans KR', sans-serif;
-{% endcase %}
-{% if t.desktop and t.desktop != '' %}font-size: {{ t.desktop | plus: 0 | at_least: 10 | at_most: 180 }}px;{% endif %}
-}
-@media (max-width: 800px) { .about-kicker, .projects-kicker {
-{% if t.mobile and t.mobile != '' %}font-size: {{ t.mobile | plus: 0 | at_least: 10 | at_most: 100 }}px;{% elsif t.desktop and t.desktop != '' %}font-size: min({{ t.desktop | plus: 0 | at_least: 10 | at_most: 180 }}px, 8vw);{% endif %}
-} }
-{% assign t = design.typography.english_name %}
-.about-name {
-{% case t.font %}
-{% when 'original' %}font-family: 'Inter Tight', 'Noto Sans KR', sans-serif;
-{% when 'sans' %}font-family: 'Noto Sans KR', sans-serif;
-{% when 'serif' %}font-family: 'Noto Serif KR', serif;
-{% when 'mono' %}font-family: 'IBM Plex Mono', 'Noto Sans KR', monospace;
-{% when 'custom1' %}font-family: 'PortfolioCustom1', 'Noto Sans KR', sans-serif;
-{% when 'custom2' %}font-family: 'PortfolioCustom2', 'Noto Sans KR', sans-serif;
-{% when 'custom3' %}font-family: 'PortfolioCustom3', 'Noto Sans KR', sans-serif;
-{% endcase %}
-{% if t.desktop and t.desktop != '' %}font-size: {{ t.desktop | plus: 0 | at_least: 10 | at_most: 180 }}px;{% endif %}
-}
-@media (max-width: 800px) { .about-name {
-{% if t.mobile and t.mobile != '' %}font-size: {{ t.mobile | plus: 0 | at_least: 10 | at_most: 100 }}px;{% elsif t.desktop and t.desktop != '' %}font-size: min({{ t.desktop | plus: 0 | at_least: 10 | at_most: 180 }}px, 8vw);{% endif %}
-} }
-{% assign t = design.typography.korean_name %}
-.about-name-ko {
-{% case t.font %}
-{% when 'original' %}font-family: 'Inter Tight', 'Noto Sans KR', sans-serif;
-{% when 'sans' %}font-family: 'Noto Sans KR', sans-serif;
-{% when 'serif' %}font-family: 'Noto Serif KR', serif;
-{% when 'mono' %}font-family: 'IBM Plex Mono', 'Noto Sans KR', monospace;
-{% when 'custom1' %}font-family: 'PortfolioCustom1', 'Noto Sans KR', sans-serif;
-{% when 'custom2' %}font-family: 'PortfolioCustom2', 'Noto Sans KR', sans-serif;
-{% when 'custom3' %}font-family: 'PortfolioCustom3', 'Noto Sans KR', sans-serif;
-{% endcase %}
-{% if t.desktop and t.desktop != '' %}font-size: {{ t.desktop | plus: 0 | at_least: 10 | at_most: 180 }}px;{% endif %}
-}
-@media (max-width: 800px) { .about-name-ko {
-{% if t.mobile and t.mobile != '' %}font-size: {{ t.mobile | plus: 0 | at_least: 10 | at_most: 100 }}px;{% elsif t.desktop and t.desktop != '' %}font-size: min({{ t.desktop | plus: 0 | at_least: 10 | at_most: 180 }}px, 8vw);{% endif %}
-} }
-{% assign t = design.typography.intro %}
-.about-description {
-{% case t.font %}
-{% when 'original' %}font-family: 'Inter Tight', 'Noto Sans KR', sans-serif;
-{% when 'sans' %}font-family: 'Noto Sans KR', sans-serif;
-{% when 'serif' %}font-family: 'Noto Serif KR', serif;
-{% when 'mono' %}font-family: 'IBM Plex Mono', 'Noto Sans KR', monospace;
-{% when 'custom1' %}font-family: 'PortfolioCustom1', 'Noto Sans KR', sans-serif;
-{% when 'custom2' %}font-family: 'PortfolioCustom2', 'Noto Sans KR', sans-serif;
-{% when 'custom3' %}font-family: 'PortfolioCustom3', 'Noto Sans KR', sans-serif;
-{% endcase %}
-{% if t.desktop and t.desktop != '' %}font-size: {{ t.desktop | plus: 0 | at_least: 10 | at_most: 180 }}px;{% endif %}
-}
-@media (max-width: 800px) { .about-description {
-{% if t.mobile and t.mobile != '' %}font-size: {{ t.mobile | plus: 0 | at_least: 10 | at_most: 100 }}px;{% elsif t.desktop and t.desktop != '' %}font-size: min({{ t.desktop | plus: 0 | at_least: 10 | at_most: 180 }}px, 8vw);{% endif %}
-} }
-{% assign t = design.typography.cv_section %}
-.cv-title {
-{% case t.font %}
-{% when 'original' %}font-family: 'Inter Tight', 'Noto Sans KR', sans-serif;
-{% when 'sans' %}font-family: 'Noto Sans KR', sans-serif;
-{% when 'serif' %}font-family: 'Noto Serif KR', serif;
-{% when 'mono' %}font-family: 'IBM Plex Mono', 'Noto Sans KR', monospace;
-{% when 'custom1' %}font-family: 'PortfolioCustom1', 'Noto Sans KR', sans-serif;
-{% when 'custom2' %}font-family: 'PortfolioCustom2', 'Noto Sans KR', sans-serif;
-{% when 'custom3' %}font-family: 'PortfolioCustom3', 'Noto Sans KR', sans-serif;
-{% endcase %}
-{% if t.desktop and t.desktop != '' %}font-size: {{ t.desktop | plus: 0 | at_least: 10 | at_most: 180 }}px;{% endif %}
-}
-@media (max-width: 800px) { .cv-title {
-{% if t.mobile and t.mobile != '' %}font-size: {{ t.mobile | plus: 0 | at_least: 10 | at_most: 100 }}px;{% elsif t.desktop and t.desktop != '' %}font-size: min({{ t.desktop | plus: 0 | at_least: 10 | at_most: 180 }}px, 8vw);{% endif %}
-} }
-{% assign t = design.typography.cv_year %}
-.cv-year {
-{% case t.font %}
-{% when 'original' %}font-family: 'Inter Tight', 'Noto Sans KR', sans-serif;
-{% when 'sans' %}font-family: 'Noto Sans KR', sans-serif;
-{% when 'serif' %}font-family: 'Noto Serif KR', serif;
-{% when 'mono' %}font-family: 'IBM Plex Mono', 'Noto Sans KR', monospace;
-{% when 'custom1' %}font-family: 'PortfolioCustom1', 'Noto Sans KR', sans-serif;
-{% when 'custom2' %}font-family: 'PortfolioCustom2', 'Noto Sans KR', sans-serif;
-{% when 'custom3' %}font-family: 'PortfolioCustom3', 'Noto Sans KR', sans-serif;
-{% endcase %}
-{% if t.desktop and t.desktop != '' %}font-size: {{ t.desktop | plus: 0 | at_least: 10 | at_most: 180 }}px;{% endif %}
-}
-@media (max-width: 800px) { .cv-year {
-{% if t.mobile and t.mobile != '' %}font-size: {{ t.mobile | plus: 0 | at_least: 10 | at_most: 100 }}px;{% elsif t.desktop and t.desktop != '' %}font-size: min({{ t.desktop | plus: 0 | at_least: 10 | at_most: 180 }}px, 8vw);{% endif %}
-} }
-{% assign t = design.typography.cv_title %}
-.cv-content strong {
-{% case t.font %}
-{% when 'original' %}font-family: 'Inter Tight', 'Noto Sans KR', sans-serif;
-{% when 'sans' %}font-family: 'Noto Sans KR', sans-serif;
-{% when 'serif' %}font-family: 'Noto Serif KR', serif;
-{% when 'mono' %}font-family: 'IBM Plex Mono', 'Noto Sans KR', monospace;
-{% when 'custom1' %}font-family: 'PortfolioCustom1', 'Noto Sans KR', sans-serif;
-{% when 'custom2' %}font-family: 'PortfolioCustom2', 'Noto Sans KR', sans-serif;
-{% when 'custom3' %}font-family: 'PortfolioCustom3', 'Noto Sans KR', sans-serif;
-{% endcase %}
-{% if t.desktop and t.desktop != '' %}font-size: {{ t.desktop | plus: 0 | at_least: 10 | at_most: 180 }}px;{% endif %}
-}
-@media (max-width: 800px) { .cv-content strong {
-{% if t.mobile and t.mobile != '' %}font-size: {{ t.mobile | plus: 0 | at_least: 10 | at_most: 100 }}px;{% elsif t.desktop and t.desktop != '' %}font-size: min({{ t.desktop | plus: 0 | at_least: 10 | at_most: 180 }}px, 8vw);{% endif %}
-} }
-{% assign t = design.typography.cv_body %}
-.cv-content span {
-{% case t.font %}
-{% when 'original' %}font-family: 'Inter Tight', 'Noto Sans KR', sans-serif;
-{% when 'sans' %}font-family: 'Noto Sans KR', sans-serif;
-{% when 'serif' %}font-family: 'Noto Serif KR', serif;
-{% when 'mono' %}font-family: 'IBM Plex Mono', 'Noto Sans KR', monospace;
-{% when 'custom1' %}font-family: 'PortfolioCustom1', 'Noto Sans KR', sans-serif;
-{% when 'custom2' %}font-family: 'PortfolioCustom2', 'Noto Sans KR', sans-serif;
-{% when 'custom3' %}font-family: 'PortfolioCustom3', 'Noto Sans KR', sans-serif;
-{% endcase %}
-{% if t.desktop and t.desktop != '' %}font-size: {{ t.desktop | plus: 0 | at_least: 10 | at_most: 180 }}px;{% endif %}
-}
-@media (max-width: 800px) { .cv-content span {
-{% if t.mobile and t.mobile != '' %}font-size: {{ t.mobile | plus: 0 | at_least: 10 | at_most: 100 }}px;{% elsif t.desktop and t.desktop != '' %}font-size: min({{ t.desktop | plus: 0 | at_least: 10 | at_most: 180 }}px, 8vw);{% endif %}
-} }
-{% assign t = design.typography.contact %}
-.contact-email, .contact-link {
-{% case t.font %}
-{% when 'original' %}font-family: 'Inter Tight', 'Noto Sans KR', sans-serif;
-{% when 'sans' %}font-family: 'Noto Sans KR', sans-serif;
-{% when 'serif' %}font-family: 'Noto Serif KR', serif;
-{% when 'mono' %}font-family: 'IBM Plex Mono', 'Noto Sans KR', monospace;
-{% when 'custom1' %}font-family: 'PortfolioCustom1', 'Noto Sans KR', sans-serif;
-{% when 'custom2' %}font-family: 'PortfolioCustom2', 'Noto Sans KR', sans-serif;
-{% when 'custom3' %}font-family: 'PortfolioCustom3', 'Noto Sans KR', sans-serif;
-{% endcase %}
-{% if t.desktop and t.desktop != '' %}font-size: {{ t.desktop | plus: 0 | at_least: 10 | at_most: 180 }}px;{% endif %}
-}
-@media (max-width: 800px) { .contact-email, .contact-link {
-{% if t.mobile and t.mobile != '' %}font-size: {{ t.mobile | plus: 0 | at_least: 10 | at_most: 100 }}px;{% elsif t.desktop and t.desktop != '' %}font-size: min({{ t.desktop | plus: 0 | at_least: 10 | at_most: 180 }}px, 8vw);{% endif %}
-} }
-{% assign t = design.typography.archive_title %}
-.projects-title {
-{% case t.font %}
-{% when 'original' %}font-family: 'Inter Tight', 'Noto Sans KR', sans-serif;
-{% when 'sans' %}font-family: 'Noto Sans KR', sans-serif;
-{% when 'serif' %}font-family: 'Noto Serif KR', serif;
-{% when 'mono' %}font-family: 'IBM Plex Mono', 'Noto Sans KR', monospace;
-{% when 'custom1' %}font-family: 'PortfolioCustom1', 'Noto Sans KR', sans-serif;
-{% when 'custom2' %}font-family: 'PortfolioCustom2', 'Noto Sans KR', sans-serif;
-{% when 'custom3' %}font-family: 'PortfolioCustom3', 'Noto Sans KR', sans-serif;
-{% endcase %}
-{% if t.desktop and t.desktop != '' %}font-size: {{ t.desktop | plus: 0 | at_least: 10 | at_most: 180 }}px;{% endif %}
-}
-@media (max-width: 800px) { .projects-title {
-{% if t.mobile and t.mobile != '' %}font-size: {{ t.mobile | plus: 0 | at_least: 10 | at_most: 100 }}px;{% elsif t.desktop and t.desktop != '' %}font-size: min({{ t.desktop | plus: 0 | at_least: 10 | at_most: 180 }}px, 8vw);{% endif %}
-} }
-{% assign t = design.typography.project_title %}
-.project-name {
-{% case t.font %}
-{% when 'original' %}font-family: 'Inter Tight', 'Noto Sans KR', sans-serif;
-{% when 'sans' %}font-family: 'Noto Sans KR', sans-serif;
-{% when 'serif' %}font-family: 'Noto Serif KR', serif;
-{% when 'mono' %}font-family: 'IBM Plex Mono', 'Noto Sans KR', monospace;
-{% when 'custom1' %}font-family: 'PortfolioCustom1', 'Noto Sans KR', sans-serif;
-{% when 'custom2' %}font-family: 'PortfolioCustom2', 'Noto Sans KR', sans-serif;
-{% when 'custom3' %}font-family: 'PortfolioCustom3', 'Noto Sans KR', sans-serif;
-{% endcase %}
-{% if t.desktop and t.desktop != '' %}font-size: {{ t.desktop | plus: 0 | at_least: 10 | at_most: 180 }}px;{% endif %}
-}
-@media (max-width: 800px) { .project-name {
-{% if t.mobile and t.mobile != '' %}font-size: {{ t.mobile | plus: 0 | at_least: 10 | at_most: 100 }}px;{% elsif t.desktop and t.desktop != '' %}font-size: min({{ t.desktop | plus: 0 | at_least: 10 | at_most: 180 }}px, 8vw);{% endif %}
-} }
-{% assign t = design.typography.subtitle %}
-.project-subtitle {
-{% case t.font %}
-{% when 'original' %}font-family: 'Inter Tight', 'Noto Sans KR', sans-serif;
-{% when 'sans' %}font-family: 'Noto Sans KR', sans-serif;
-{% when 'serif' %}font-family: 'Noto Serif KR', serif;
-{% when 'mono' %}font-family: 'IBM Plex Mono', 'Noto Sans KR', monospace;
-{% when 'custom1' %}font-family: 'PortfolioCustom1', 'Noto Sans KR', sans-serif;
-{% when 'custom2' %}font-family: 'PortfolioCustom2', 'Noto Sans KR', sans-serif;
-{% when 'custom3' %}font-family: 'PortfolioCustom3', 'Noto Sans KR', sans-serif;
-{% endcase %}
-{% if t.desktop and t.desktop != '' %}font-size: {{ t.desktop | plus: 0 | at_least: 10 | at_most: 180 }}px;{% endif %}
-}
-@media (max-width: 800px) { .project-subtitle {
-{% if t.mobile and t.mobile != '' %}font-size: {{ t.mobile | plus: 0 | at_least: 10 | at_most: 100 }}px;{% elsif t.desktop and t.desktop != '' %}font-size: min({{ t.desktop | plus: 0 | at_least: 10 | at_most: 180 }}px, 8vw);{% endif %}
-} }
-{% assign t = design.typography.meta %}
-.project-number, .project-meta {
-{% case t.font %}
-{% when 'original' %}font-family: 'Inter Tight', 'Noto Sans KR', sans-serif;
-{% when 'sans' %}font-family: 'Noto Sans KR', sans-serif;
-{% when 'serif' %}font-family: 'Noto Serif KR', serif;
-{% when 'mono' %}font-family: 'IBM Plex Mono', 'Noto Sans KR', monospace;
-{% when 'custom1' %}font-family: 'PortfolioCustom1', 'Noto Sans KR', sans-serif;
-{% when 'custom2' %}font-family: 'PortfolioCustom2', 'Noto Sans KR', sans-serif;
-{% when 'custom3' %}font-family: 'PortfolioCustom3', 'Noto Sans KR', sans-serif;
-{% endcase %}
-{% if t.desktop and t.desktop != '' %}font-size: {{ t.desktop | plus: 0 | at_least: 10 | at_most: 180 }}px;{% endif %}
-}
-@media (max-width: 800px) { .project-number, .project-meta {
-{% if t.mobile and t.mobile != '' %}font-size: {{ t.mobile | plus: 0 | at_least: 10 | at_most: 100 }}px;{% elsif t.desktop and t.desktop != '' %}font-size: min({{ t.desktop | plus: 0 | at_least: 10 | at_most: 180 }}px, 8vw);{% endif %}
-} }
-{% assign t = design.typography.body %}
-.project-body {
-{% case t.font %}
-{% when 'original' %}font-family: 'Inter Tight', 'Noto Sans KR', sans-serif;
-{% when 'sans' %}font-family: 'Noto Sans KR', sans-serif;
-{% when 'serif' %}font-family: 'Noto Serif KR', serif;
-{% when 'mono' %}font-family: 'IBM Plex Mono', 'Noto Sans KR', monospace;
-{% when 'custom1' %}font-family: 'PortfolioCustom1', 'Noto Sans KR', sans-serif;
-{% when 'custom2' %}font-family: 'PortfolioCustom2', 'Noto Sans KR', sans-serif;
-{% when 'custom3' %}font-family: 'PortfolioCustom3', 'Noto Sans KR', sans-serif;
-{% endcase %}
-{% if t.desktop and t.desktop != '' %}font-size: {{ t.desktop | plus: 0 | at_least: 10 | at_most: 180 }}px;{% endif %}
-}
-@media (max-width: 800px) { .project-body {
-{% if t.mobile and t.mobile != '' %}font-size: {{ t.mobile | plus: 0 | at_least: 10 | at_most: 100 }}px;{% elsif t.desktop and t.desktop != '' %}font-size: min({{ t.desktop | plus: 0 | at_least: 10 | at_most: 180 }}px, 8vw);{% endif %}
-} }
-{% assign t = design.typography.body_heading %}
-.project-body h1, .project-body h2, .project-body h3, .project-body h4, .project-body h5, .project-body h6 {
-{% case t.font %}
-{% when 'original' %}font-family: 'Inter Tight', 'Noto Sans KR', sans-serif;
-{% when 'sans' %}font-family: 'Noto Sans KR', sans-serif;
-{% when 'serif' %}font-family: 'Noto Serif KR', serif;
-{% when 'mono' %}font-family: 'IBM Plex Mono', 'Noto Sans KR', monospace;
-{% when 'custom1' %}font-family: 'PortfolioCustom1', 'Noto Sans KR', sans-serif;
-{% when 'custom2' %}font-family: 'PortfolioCustom2', 'Noto Sans KR', sans-serif;
-{% when 'custom3' %}font-family: 'PortfolioCustom3', 'Noto Sans KR', sans-serif;
-{% endcase %}
-{% if t.desktop and t.desktop != '' %}font-size: {{ t.desktop | plus: 0 | at_least: 10 | at_most: 180 }}px;{% endif %}
-}
-@media (max-width: 800px) { .project-body h1, .project-body h2, .project-body h3, .project-body h4, .project-body h5, .project-body h6 {
-{% if t.mobile and t.mobile != '' %}font-size: {{ t.mobile | plus: 0 | at_least: 10 | at_most: 100 }}px;{% elsif t.desktop and t.desktop != '' %}font-size: min({{ t.desktop | plus: 0 | at_least: 10 | at_most: 180 }}px, 8vw);{% endif %}
-} }
-{% assign t = design.typography.footer %}
+@media(max-width:800px){.header-left, .header-right {font-size: {{ t.mobile | default: 11 | plus: 0 | at_least: 10 | at_most: 100 }}px;}}
+{% assign t = site.data.design_common.footer %}
 .site-footer {
 {% case t.font %}
 {% when 'original' %}font-family: 'Inter Tight', 'Noto Sans KR', sans-serif;
@@ -362,9 +74,361 @@
 {% when 'custom2' %}font-family: 'PortfolioCustom2', 'Noto Sans KR', sans-serif;
 {% when 'custom3' %}font-family: 'PortfolioCustom3', 'Noto Sans KR', sans-serif;
 {% endcase %}
-{% if t.desktop and t.desktop != '' %}font-size: {{ t.desktop | plus: 0 | at_least: 10 | at_most: 180 }}px;{% endif %}
+font-size: {{ t.desktop | default: 10 | plus: 0 | at_least: 10 | at_most: 180 }}px;
+line-height: {{ t.line_height | default: 1.55 | plus: 0 | at_least: 0.8 | at_most: 2.5 }};
+letter-spacing: {{ t.letter_spacing | default: 0 | plus: 0 | at_least: -0.1 | at_most: 0.2 }}em;
 }
-@media (max-width: 800px) { .site-footer {
-{% if t.mobile and t.mobile != '' %}font-size: {{ t.mobile | plus: 0 | at_least: 10 | at_most: 100 }}px;{% elsif t.desktop and t.desktop != '' %}font-size: min({{ t.desktop | plus: 0 | at_least: 10 | at_most: 180 }}px, 8vw);{% endif %}
-} }
+@media(max-width:800px){.site-footer {font-size: {{ t.mobile | default: 10 | plus: 0 | at_least: 10 | at_most: 100 }}px;}}
+{% assign t = site.data.design_home.home_label %}
+.home .home-intro-left, .home .home-intro-right {
+{% case t.font %}
+{% when 'original' %}font-family: 'Inter Tight', 'Noto Sans KR', sans-serif;
+{% when 'sans' %}font-family: 'Noto Sans KR', sans-serif;
+{% when 'serif' %}font-family: 'Noto Serif KR', serif;
+{% when 'mono' %}font-family: 'IBM Plex Mono', 'Noto Sans KR', monospace;
+{% when 'custom1' %}font-family: 'PortfolioCustom1', 'Noto Sans KR', sans-serif;
+{% when 'custom2' %}font-family: 'PortfolioCustom2', 'Noto Sans KR', sans-serif;
+{% when 'custom3' %}font-family: 'PortfolioCustom3', 'Noto Sans KR', sans-serif;
+{% endcase %}
+font-size: {{ t.desktop | default: 12 | plus: 0 | at_least: 10 | at_most: 180 }}px;
+line-height: {{ t.line_height | default: 1.55 | plus: 0 | at_least: 0.8 | at_most: 2.5 }};
+letter-spacing: {{ t.letter_spacing | default: 0 | plus: 0 | at_least: -0.1 | at_most: 0.2 }}em;
+}
+@media(max-width:800px){.home .home-intro-left, .home .home-intro-right {font-size: {{ t.mobile | default: 12 | plus: 0 | at_least: 10 | at_most: 100 }}px;}}
+{% assign t = site.data.design_home.caption %}
+.home .work-title, .home .image-empty {
+{% case t.font %}
+{% when 'original' %}font-family: 'Inter Tight', 'Noto Sans KR', sans-serif;
+{% when 'sans' %}font-family: 'Noto Sans KR', sans-serif;
+{% when 'serif' %}font-family: 'Noto Serif KR', serif;
+{% when 'mono' %}font-family: 'IBM Plex Mono', 'Noto Sans KR', monospace;
+{% when 'custom1' %}font-family: 'PortfolioCustom1', 'Noto Sans KR', sans-serif;
+{% when 'custom2' %}font-family: 'PortfolioCustom2', 'Noto Sans KR', sans-serif;
+{% when 'custom3' %}font-family: 'PortfolioCustom3', 'Noto Sans KR', sans-serif;
+{% endcase %}
+font-size: {{ t.desktop | default: 13 | plus: 0 | at_least: 10 | at_most: 180 }}px;
+line-height: {{ t.line_height | default: 1.55 | plus: 0 | at_least: 0.8 | at_most: 2.5 }};
+letter-spacing: {{ t.letter_spacing | default: 0 | plus: 0 | at_least: -0.1 | at_most: 0.2 }}em;
+}
+@media(max-width:800px){.home .work-title, .home .image-empty {font-size: {{ t.mobile | default: 13 | plus: 0 | at_least: 10 | at_most: 100 }}px;}}
+{% assign t = site.data.design_home.numbers %}
+.home .work-number, .home .work-year {
+{% case t.font %}
+{% when 'original' %}font-family: 'Inter Tight', 'Noto Sans KR', sans-serif;
+{% when 'sans' %}font-family: 'Noto Sans KR', sans-serif;
+{% when 'serif' %}font-family: 'Noto Serif KR', serif;
+{% when 'mono' %}font-family: 'IBM Plex Mono', 'Noto Sans KR', monospace;
+{% when 'custom1' %}font-family: 'PortfolioCustom1', 'Noto Sans KR', sans-serif;
+{% when 'custom2' %}font-family: 'PortfolioCustom2', 'Noto Sans KR', sans-serif;
+{% when 'custom3' %}font-family: 'PortfolioCustom3', 'Noto Sans KR', sans-serif;
+{% endcase %}
+font-size: {{ t.desktop | default: 11 | plus: 0 | at_least: 10 | at_most: 180 }}px;
+line-height: {{ t.line_height | default: 1.55 | plus: 0 | at_least: 0.8 | at_most: 2.5 }};
+letter-spacing: {{ t.letter_spacing | default: 0 | plus: 0 | at_least: -0.1 | at_most: 0.2 }}em;
+}
+@media(max-width:800px){.home .work-number, .home .work-year {font-size: {{ t.mobile | default: 11 | plus: 0 | at_least: 10 | at_most: 100 }}px;}}
+{% assign t = site.data.design_about.kicker %}
+.about .about-kicker, .about .projects-kicker {
+{% case t.font %}
+{% when 'original' %}font-family: 'Inter Tight', 'Noto Sans KR', sans-serif;
+{% when 'sans' %}font-family: 'Noto Sans KR', sans-serif;
+{% when 'serif' %}font-family: 'Noto Serif KR', serif;
+{% when 'mono' %}font-family: 'IBM Plex Mono', 'Noto Sans KR', monospace;
+{% when 'custom1' %}font-family: 'PortfolioCustom1', 'Noto Sans KR', sans-serif;
+{% when 'custom2' %}font-family: 'PortfolioCustom2', 'Noto Sans KR', sans-serif;
+{% when 'custom3' %}font-family: 'PortfolioCustom3', 'Noto Sans KR', sans-serif;
+{% endcase %}
+font-size: {{ t.desktop | default: 12 | plus: 0 | at_least: 10 | at_most: 180 }}px;
+line-height: {{ t.line_height | default: 1.55 | plus: 0 | at_least: 0.8 | at_most: 2.5 }};
+letter-spacing: {{ t.letter_spacing | default: 0 | plus: 0 | at_least: -0.1 | at_most: 0.2 }}em;
+}
+@media(max-width:800px){.about .about-kicker, .about .projects-kicker {font-size: {{ t.mobile | default: 12 | plus: 0 | at_least: 10 | at_most: 100 }}px;}}
+{% assign t = site.data.design_about.english_name %}
+.about .about-name {
+{% case t.font %}
+{% when 'original' %}font-family: 'Inter Tight', 'Noto Sans KR', sans-serif;
+{% when 'sans' %}font-family: 'Noto Sans KR', sans-serif;
+{% when 'serif' %}font-family: 'Noto Serif KR', serif;
+{% when 'mono' %}font-family: 'IBM Plex Mono', 'Noto Sans KR', monospace;
+{% when 'custom1' %}font-family: 'PortfolioCustom1', 'Noto Sans KR', sans-serif;
+{% when 'custom2' %}font-family: 'PortfolioCustom2', 'Noto Sans KR', sans-serif;
+{% when 'custom3' %}font-family: 'PortfolioCustom3', 'Noto Sans KR', sans-serif;
+{% endcase %}
+font-size: {{ t.desktop | default: 90 | plus: 0 | at_least: 10 | at_most: 180 }}px;
+line-height: {{ t.line_height | default: 1.55 | plus: 0 | at_least: 0.8 | at_most: 2.5 }};
+letter-spacing: {{ t.letter_spacing | default: 0 | plus: 0 | at_least: -0.1 | at_most: 0.2 }}em;
+}
+@media(max-width:800px){.about .about-name {font-size: {{ t.mobile | default: 48 | plus: 0 | at_least: 10 | at_most: 100 }}px;}}
+{% assign t = site.data.design_about.korean_name %}
+.about .about-name-ko {
+{% case t.font %}
+{% when 'original' %}font-family: 'Inter Tight', 'Noto Sans KR', sans-serif;
+{% when 'sans' %}font-family: 'Noto Sans KR', sans-serif;
+{% when 'serif' %}font-family: 'Noto Serif KR', serif;
+{% when 'mono' %}font-family: 'IBM Plex Mono', 'Noto Sans KR', monospace;
+{% when 'custom1' %}font-family: 'PortfolioCustom1', 'Noto Sans KR', sans-serif;
+{% when 'custom2' %}font-family: 'PortfolioCustom2', 'Noto Sans KR', sans-serif;
+{% when 'custom3' %}font-family: 'PortfolioCustom3', 'Noto Sans KR', sans-serif;
+{% endcase %}
+font-size: {{ t.desktop | default: 16 | plus: 0 | at_least: 10 | at_most: 180 }}px;
+line-height: {{ t.line_height | default: 1.55 | plus: 0 | at_least: 0.8 | at_most: 2.5 }};
+letter-spacing: {{ t.letter_spacing | default: 0 | plus: 0 | at_least: -0.1 | at_most: 0.2 }}em;
+}
+@media(max-width:800px){.about .about-name-ko {font-size: {{ t.mobile | default: 16 | plus: 0 | at_least: 10 | at_most: 100 }}px;}}
+{% assign t = site.data.design_about.intro %}
+.about .about-description {
+{% case t.font %}
+{% when 'original' %}font-family: 'Inter Tight', 'Noto Sans KR', sans-serif;
+{% when 'sans' %}font-family: 'Noto Sans KR', sans-serif;
+{% when 'serif' %}font-family: 'Noto Serif KR', serif;
+{% when 'mono' %}font-family: 'IBM Plex Mono', 'Noto Sans KR', monospace;
+{% when 'custom1' %}font-family: 'PortfolioCustom1', 'Noto Sans KR', sans-serif;
+{% when 'custom2' %}font-family: 'PortfolioCustom2', 'Noto Sans KR', sans-serif;
+{% when 'custom3' %}font-family: 'PortfolioCustom3', 'Noto Sans KR', sans-serif;
+{% endcase %}
+font-size: {{ t.desktop | default: 22 | plus: 0 | at_least: 10 | at_most: 180 }}px;
+line-height: {{ t.line_height | default: 1.55 | plus: 0 | at_least: 0.8 | at_most: 2.5 }};
+letter-spacing: {{ t.letter_spacing | default: 0 | plus: 0 | at_least: -0.1 | at_most: 0.2 }}em;
+}
+@media(max-width:800px){.about .about-description {font-size: {{ t.mobile | default: 18 | plus: 0 | at_least: 10 | at_most: 100 }}px;}}
+{% assign t = site.data.design_about.cv_section %}
+.about .cv-title {
+{% case t.font %}
+{% when 'original' %}font-family: 'Inter Tight', 'Noto Sans KR', sans-serif;
+{% when 'sans' %}font-family: 'Noto Sans KR', sans-serif;
+{% when 'serif' %}font-family: 'Noto Serif KR', serif;
+{% when 'mono' %}font-family: 'IBM Plex Mono', 'Noto Sans KR', monospace;
+{% when 'custom1' %}font-family: 'PortfolioCustom1', 'Noto Sans KR', sans-serif;
+{% when 'custom2' %}font-family: 'PortfolioCustom2', 'Noto Sans KR', sans-serif;
+{% when 'custom3' %}font-family: 'PortfolioCustom3', 'Noto Sans KR', sans-serif;
+{% endcase %}
+font-size: {{ t.desktop | default: 11 | plus: 0 | at_least: 10 | at_most: 180 }}px;
+line-height: {{ t.line_height | default: 1.55 | plus: 0 | at_least: 0.8 | at_most: 2.5 }};
+letter-spacing: {{ t.letter_spacing | default: 0 | plus: 0 | at_least: -0.1 | at_most: 0.2 }}em;
+}
+@media(max-width:800px){.about .cv-title {font-size: {{ t.mobile | default: 11 | plus: 0 | at_least: 10 | at_most: 100 }}px;}}
+{% assign t = site.data.design_about.cv_year %}
+.about .cv-year {
+{% case t.font %}
+{% when 'original' %}font-family: 'Inter Tight', 'Noto Sans KR', sans-serif;
+{% when 'sans' %}font-family: 'Noto Sans KR', sans-serif;
+{% when 'serif' %}font-family: 'Noto Serif KR', serif;
+{% when 'mono' %}font-family: 'IBM Plex Mono', 'Noto Sans KR', monospace;
+{% when 'custom1' %}font-family: 'PortfolioCustom1', 'Noto Sans KR', sans-serif;
+{% when 'custom2' %}font-family: 'PortfolioCustom2', 'Noto Sans KR', sans-serif;
+{% when 'custom3' %}font-family: 'PortfolioCustom3', 'Noto Sans KR', sans-serif;
+{% endcase %}
+font-size: {{ t.desktop | default: 11 | plus: 0 | at_least: 10 | at_most: 180 }}px;
+line-height: {{ t.line_height | default: 1.55 | plus: 0 | at_least: 0.8 | at_most: 2.5 }};
+letter-spacing: {{ t.letter_spacing | default: 0 | plus: 0 | at_least: -0.1 | at_most: 0.2 }}em;
+}
+@media(max-width:800px){.about .cv-year {font-size: {{ t.mobile | default: 11 | plus: 0 | at_least: 10 | at_most: 100 }}px;}}
+{% assign t = site.data.design_about.cv_title %}
+.about .cv-content strong {
+{% case t.font %}
+{% when 'original' %}font-family: 'Inter Tight', 'Noto Sans KR', sans-serif;
+{% when 'sans' %}font-family: 'Noto Sans KR', sans-serif;
+{% when 'serif' %}font-family: 'Noto Serif KR', serif;
+{% when 'mono' %}font-family: 'IBM Plex Mono', 'Noto Sans KR', monospace;
+{% when 'custom1' %}font-family: 'PortfolioCustom1', 'Noto Sans KR', sans-serif;
+{% when 'custom2' %}font-family: 'PortfolioCustom2', 'Noto Sans KR', sans-serif;
+{% when 'custom3' %}font-family: 'PortfolioCustom3', 'Noto Sans KR', sans-serif;
+{% endcase %}
+font-size: {{ t.desktop | default: 15 | plus: 0 | at_least: 10 | at_most: 180 }}px;
+line-height: {{ t.line_height | default: 1.55 | plus: 0 | at_least: 0.8 | at_most: 2.5 }};
+letter-spacing: {{ t.letter_spacing | default: 0 | plus: 0 | at_least: -0.1 | at_most: 0.2 }}em;
+}
+@media(max-width:800px){.about .cv-content strong {font-size: {{ t.mobile | default: 15 | plus: 0 | at_least: 10 | at_most: 100 }}px;}}
+{% assign t = site.data.design_about.cv_body %}
+.about .cv-content span {
+{% case t.font %}
+{% when 'original' %}font-family: 'Inter Tight', 'Noto Sans KR', sans-serif;
+{% when 'sans' %}font-family: 'Noto Sans KR', sans-serif;
+{% when 'serif' %}font-family: 'Noto Serif KR', serif;
+{% when 'mono' %}font-family: 'IBM Plex Mono', 'Noto Sans KR', monospace;
+{% when 'custom1' %}font-family: 'PortfolioCustom1', 'Noto Sans KR', sans-serif;
+{% when 'custom2' %}font-family: 'PortfolioCustom2', 'Noto Sans KR', sans-serif;
+{% when 'custom3' %}font-family: 'PortfolioCustom3', 'Noto Sans KR', sans-serif;
+{% endcase %}
+font-size: {{ t.desktop | default: 13 | plus: 0 | at_least: 10 | at_most: 180 }}px;
+line-height: {{ t.line_height | default: 1.55 | plus: 0 | at_least: 0.8 | at_most: 2.5 }};
+letter-spacing: {{ t.letter_spacing | default: 0 | plus: 0 | at_least: -0.1 | at_most: 0.2 }}em;
+}
+@media(max-width:800px){.about .cv-content span {font-size: {{ t.mobile | default: 13 | plus: 0 | at_least: 10 | at_most: 100 }}px;}}
+{% assign t = site.data.design_about.contact %}
+.about .contact-email, .about .contact-link {
+{% case t.font %}
+{% when 'original' %}font-family: 'Inter Tight', 'Noto Sans KR', sans-serif;
+{% when 'sans' %}font-family: 'Noto Sans KR', sans-serif;
+{% when 'serif' %}font-family: 'Noto Serif KR', serif;
+{% when 'mono' %}font-family: 'IBM Plex Mono', 'Noto Sans KR', monospace;
+{% when 'custom1' %}font-family: 'PortfolioCustom1', 'Noto Sans KR', sans-serif;
+{% when 'custom2' %}font-family: 'PortfolioCustom2', 'Noto Sans KR', sans-serif;
+{% when 'custom3' %}font-family: 'PortfolioCustom3', 'Noto Sans KR', sans-serif;
+{% endcase %}
+font-size: {{ t.desktop | default: 38 | plus: 0 | at_least: 10 | at_most: 180 }}px;
+line-height: {{ t.line_height | default: 1.55 | plus: 0 | at_least: 0.8 | at_most: 2.5 }};
+letter-spacing: {{ t.letter_spacing | default: 0 | plus: 0 | at_least: -0.1 | at_most: 0.2 }}em;
+}
+@media(max-width:800px){.about .contact-email, .about .contact-link {font-size: {{ t.mobile | default: 25 | plus: 0 | at_least: 10 | at_most: 100 }}px;}}
+{% assign t = site.data.design_projects.kicker %}
+.projects .about-kicker, .projects .projects-kicker {
+{% case t.font %}
+{% when 'original' %}font-family: 'Inter Tight', 'Noto Sans KR', sans-serif;
+{% when 'sans' %}font-family: 'Noto Sans KR', sans-serif;
+{% when 'serif' %}font-family: 'Noto Serif KR', serif;
+{% when 'mono' %}font-family: 'IBM Plex Mono', 'Noto Sans KR', monospace;
+{% when 'custom1' %}font-family: 'PortfolioCustom1', 'Noto Sans KR', sans-serif;
+{% when 'custom2' %}font-family: 'PortfolioCustom2', 'Noto Sans KR', sans-serif;
+{% when 'custom3' %}font-family: 'PortfolioCustom3', 'Noto Sans KR', sans-serif;
+{% endcase %}
+font-size: {{ t.desktop | default: 12 | plus: 0 | at_least: 10 | at_most: 180 }}px;
+line-height: {{ t.line_height | default: 1.55 | plus: 0 | at_least: 0.8 | at_most: 2.5 }};
+letter-spacing: {{ t.letter_spacing | default: 0 | plus: 0 | at_least: -0.1 | at_most: 0.2 }}em;
+}
+@media(max-width:800px){.projects .about-kicker, .projects .projects-kicker {font-size: {{ t.mobile | default: 12 | plus: 0 | at_least: 10 | at_most: 100 }}px;}}
+{% assign t = site.data.design_projects.archive_title %}
+.projects .projects-title {
+{% case t.font %}
+{% when 'original' %}font-family: 'Inter Tight', 'Noto Sans KR', sans-serif;
+{% when 'sans' %}font-family: 'Noto Sans KR', sans-serif;
+{% when 'serif' %}font-family: 'Noto Serif KR', serif;
+{% when 'mono' %}font-family: 'IBM Plex Mono', 'Noto Sans KR', monospace;
+{% when 'custom1' %}font-family: 'PortfolioCustom1', 'Noto Sans KR', sans-serif;
+{% when 'custom2' %}font-family: 'PortfolioCustom2', 'Noto Sans KR', sans-serif;
+{% when 'custom3' %}font-family: 'PortfolioCustom3', 'Noto Sans KR', sans-serif;
+{% endcase %}
+font-size: {{ t.desktop | default: 90 | plus: 0 | at_least: 10 | at_most: 180 }}px;
+line-height: {{ t.line_height | default: 1.55 | plus: 0 | at_least: 0.8 | at_most: 2.5 }};
+letter-spacing: {{ t.letter_spacing | default: 0 | plus: 0 | at_least: -0.1 | at_most: 0.2 }}em;
+}
+@media(max-width:800px){.projects .projects-title {font-size: {{ t.mobile | default: 48 | plus: 0 | at_least: 10 | at_most: 100 }}px;}}
+{% assign t = site.data.design_projects.project_title %}
+.projects .project-name {
+{% case t.font %}
+{% when 'original' %}font-family: 'Inter Tight', 'Noto Sans KR', sans-serif;
+{% when 'sans' %}font-family: 'Noto Sans KR', sans-serif;
+{% when 'serif' %}font-family: 'Noto Serif KR', serif;
+{% when 'mono' %}font-family: 'IBM Plex Mono', 'Noto Sans KR', monospace;
+{% when 'custom1' %}font-family: 'PortfolioCustom1', 'Noto Sans KR', sans-serif;
+{% when 'custom2' %}font-family: 'PortfolioCustom2', 'Noto Sans KR', sans-serif;
+{% when 'custom3' %}font-family: 'PortfolioCustom3', 'Noto Sans KR', sans-serif;
+{% endcase %}
+font-size: {{ t.desktop | default: 51 | plus: 0 | at_least: 10 | at_most: 180 }}px;
+line-height: {{ t.line_height | default: 1.55 | plus: 0 | at_least: 0.8 | at_most: 2.5 }};
+letter-spacing: {{ t.letter_spacing | default: 0 | plus: 0 | at_least: -0.1 | at_most: 0.2 }}em;
+}
+@media(max-width:800px){.projects .project-name {font-size: {{ t.mobile | default: 34 | plus: 0 | at_least: 10 | at_most: 100 }}px;}}
+{% assign t = site.data.design_projects.subtitle %}
+.projects .project-subtitle {
+{% case t.font %}
+{% when 'original' %}font-family: 'Inter Tight', 'Noto Sans KR', sans-serif;
+{% when 'sans' %}font-family: 'Noto Sans KR', sans-serif;
+{% when 'serif' %}font-family: 'Noto Serif KR', serif;
+{% when 'mono' %}font-family: 'IBM Plex Mono', 'Noto Sans KR', monospace;
+{% when 'custom1' %}font-family: 'PortfolioCustom1', 'Noto Sans KR', sans-serif;
+{% when 'custom2' %}font-family: 'PortfolioCustom2', 'Noto Sans KR', sans-serif;
+{% when 'custom3' %}font-family: 'PortfolioCustom3', 'Noto Sans KR', sans-serif;
+{% endcase %}
+font-size: {{ t.desktop | default: 13 | plus: 0 | at_least: 10 | at_most: 180 }}px;
+line-height: {{ t.line_height | default: 1.55 | plus: 0 | at_least: 0.8 | at_most: 2.5 }};
+letter-spacing: {{ t.letter_spacing | default: 0 | plus: 0 | at_least: -0.1 | at_most: 0.2 }}em;
+}
+@media(max-width:800px){.projects .project-subtitle {font-size: {{ t.mobile | default: 13 | plus: 0 | at_least: 10 | at_most: 100 }}px;}}
+{% assign t = site.data.design_projects.meta %}
+.projects .project-number, .projects .project-meta {
+{% case t.font %}
+{% when 'original' %}font-family: 'Inter Tight', 'Noto Sans KR', sans-serif;
+{% when 'sans' %}font-family: 'Noto Sans KR', sans-serif;
+{% when 'serif' %}font-family: 'Noto Serif KR', serif;
+{% when 'mono' %}font-family: 'IBM Plex Mono', 'Noto Sans KR', monospace;
+{% when 'custom1' %}font-family: 'PortfolioCustom1', 'Noto Sans KR', sans-serif;
+{% when 'custom2' %}font-family: 'PortfolioCustom2', 'Noto Sans KR', sans-serif;
+{% when 'custom3' %}font-family: 'PortfolioCustom3', 'Noto Sans KR', sans-serif;
+{% endcase %}
+font-size: {{ t.desktop | default: 11 | plus: 0 | at_least: 10 | at_most: 180 }}px;
+line-height: {{ t.line_height | default: 1.55 | plus: 0 | at_least: 0.8 | at_most: 2.5 }};
+letter-spacing: {{ t.letter_spacing | default: 0 | plus: 0 | at_least: -0.1 | at_most: 0.2 }}em;
+}
+@media(max-width:800px){.projects .project-number, .projects .project-meta {font-size: {{ t.mobile | default: 11 | plus: 0 | at_least: 10 | at_most: 100 }}px;}}
+{% assign t = site.data.design_detail.project_title %}
+.project-detail .project-name {
+{% case t.font %}
+{% when 'original' %}font-family: 'Inter Tight', 'Noto Sans KR', sans-serif;
+{% when 'sans' %}font-family: 'Noto Sans KR', sans-serif;
+{% when 'serif' %}font-family: 'Noto Serif KR', serif;
+{% when 'mono' %}font-family: 'IBM Plex Mono', 'Noto Sans KR', monospace;
+{% when 'custom1' %}font-family: 'PortfolioCustom1', 'Noto Sans KR', sans-serif;
+{% when 'custom2' %}font-family: 'PortfolioCustom2', 'Noto Sans KR', sans-serif;
+{% when 'custom3' %}font-family: 'PortfolioCustom3', 'Noto Sans KR', sans-serif;
+{% endcase %}
+font-size: {{ t.desktop | default: 51 | plus: 0 | at_least: 10 | at_most: 180 }}px;
+line-height: {{ t.line_height | default: 1.55 | plus: 0 | at_least: 0.8 | at_most: 2.5 }};
+letter-spacing: {{ t.letter_spacing | default: 0 | plus: 0 | at_least: -0.1 | at_most: 0.2 }}em;
+}
+@media(max-width:800px){.project-detail .project-name {font-size: {{ t.mobile | default: 34 | plus: 0 | at_least: 10 | at_most: 100 }}px;}}
+{% assign t = site.data.design_detail.subtitle %}
+.project-detail .project-subtitle {
+{% case t.font %}
+{% when 'original' %}font-family: 'Inter Tight', 'Noto Sans KR', sans-serif;
+{% when 'sans' %}font-family: 'Noto Sans KR', sans-serif;
+{% when 'serif' %}font-family: 'Noto Serif KR', serif;
+{% when 'mono' %}font-family: 'IBM Plex Mono', 'Noto Sans KR', monospace;
+{% when 'custom1' %}font-family: 'PortfolioCustom1', 'Noto Sans KR', sans-serif;
+{% when 'custom2' %}font-family: 'PortfolioCustom2', 'Noto Sans KR', sans-serif;
+{% when 'custom3' %}font-family: 'PortfolioCustom3', 'Noto Sans KR', sans-serif;
+{% endcase %}
+font-size: {{ t.desktop | default: 13 | plus: 0 | at_least: 10 | at_most: 180 }}px;
+line-height: {{ t.line_height | default: 1.55 | plus: 0 | at_least: 0.8 | at_most: 2.5 }};
+letter-spacing: {{ t.letter_spacing | default: 0 | plus: 0 | at_least: -0.1 | at_most: 0.2 }}em;
+}
+@media(max-width:800px){.project-detail .project-subtitle {font-size: {{ t.mobile | default: 13 | plus: 0 | at_least: 10 | at_most: 100 }}px;}}
+{% assign t = site.data.design_detail.meta %}
+.project-detail .project-number, .project-detail .project-meta {
+{% case t.font %}
+{% when 'original' %}font-family: 'Inter Tight', 'Noto Sans KR', sans-serif;
+{% when 'sans' %}font-family: 'Noto Sans KR', sans-serif;
+{% when 'serif' %}font-family: 'Noto Serif KR', serif;
+{% when 'mono' %}font-family: 'IBM Plex Mono', 'Noto Sans KR', monospace;
+{% when 'custom1' %}font-family: 'PortfolioCustom1', 'Noto Sans KR', sans-serif;
+{% when 'custom2' %}font-family: 'PortfolioCustom2', 'Noto Sans KR', sans-serif;
+{% when 'custom3' %}font-family: 'PortfolioCustom3', 'Noto Sans KR', sans-serif;
+{% endcase %}
+font-size: {{ t.desktop | default: 11 | plus: 0 | at_least: 10 | at_most: 180 }}px;
+line-height: {{ t.line_height | default: 1.55 | plus: 0 | at_least: 0.8 | at_most: 2.5 }};
+letter-spacing: {{ t.letter_spacing | default: 0 | plus: 0 | at_least: -0.1 | at_most: 0.2 }}em;
+}
+@media(max-width:800px){.project-detail .project-number, .project-detail .project-meta {font-size: {{ t.mobile | default: 11 | plus: 0 | at_least: 10 | at_most: 100 }}px;}}
+{% assign t = site.data.design_detail.body %}
+.project-detail .project-body {
+{% case t.font %}
+{% when 'original' %}font-family: 'Inter Tight', 'Noto Sans KR', sans-serif;
+{% when 'sans' %}font-family: 'Noto Sans KR', sans-serif;
+{% when 'serif' %}font-family: 'Noto Serif KR', serif;
+{% when 'mono' %}font-family: 'IBM Plex Mono', 'Noto Sans KR', monospace;
+{% when 'custom1' %}font-family: 'PortfolioCustom1', 'Noto Sans KR', sans-serif;
+{% when 'custom2' %}font-family: 'PortfolioCustom2', 'Noto Sans KR', sans-serif;
+{% when 'custom3' %}font-family: 'PortfolioCustom3', 'Noto Sans KR', sans-serif;
+{% endcase %}
+font-size: {{ t.desktop | default: 16 | plus: 0 | at_least: 10 | at_most: 180 }}px;
+line-height: {{ t.line_height | default: 1.55 | plus: 0 | at_least: 0.8 | at_most: 2.5 }};
+letter-spacing: {{ t.letter_spacing | default: 0 | plus: 0 | at_least: -0.1 | at_most: 0.2 }}em;
+}
+@media(max-width:800px){.project-detail .project-body {font-size: {{ t.mobile | default: 16 | plus: 0 | at_least: 10 | at_most: 100 }}px;}}
+{% assign t = site.data.design_detail.body_heading %}
+.project-detail .project-body h1, .project-detail .project-body h2, .project-detail .project-body h3, .project-detail .project-body h4, .project-detail .project-body h5, .project-detail .project-body h6 {
+{% case t.font %}
+{% when 'original' %}font-family: 'Inter Tight', 'Noto Sans KR', sans-serif;
+{% when 'sans' %}font-family: 'Noto Sans KR', sans-serif;
+{% when 'serif' %}font-family: 'Noto Serif KR', serif;
+{% when 'mono' %}font-family: 'IBM Plex Mono', 'Noto Sans KR', monospace;
+{% when 'custom1' %}font-family: 'PortfolioCustom1', 'Noto Sans KR', sans-serif;
+{% when 'custom2' %}font-family: 'PortfolioCustom2', 'Noto Sans KR', sans-serif;
+{% when 'custom3' %}font-family: 'PortfolioCustom3', 'Noto Sans KR', sans-serif;
+{% endcase %}
+font-size: {{ t.desktop | default: 28 | plus: 0 | at_least: 10 | at_most: 180 }}px;
+line-height: {{ t.line_height | default: 1.55 | plus: 0 | at_least: 0.8 | at_most: 2.5 }};
+letter-spacing: {{ t.letter_spacing | default: 0 | plus: 0 | at_least: -0.1 | at_most: 0.2 }}em;
+}
+@media(max-width:800px){.project-detail .project-body h1, .project-detail .project-body h2, .project-detail .project-body h3, .project-detail .project-body h4, .project-detail .project-body h5, .project-detail .project-body h6 {font-size: {{ t.mobile | default: 24 | plus: 0 | at_least: 10 | at_most: 100 }}px;}}
 </style>

@@ -1,0 +1,18 @@
+home_label:
+  font: inherit
+  desktop: 12
+  mobile: 12
+  line_height: 1.55
+  letter_spacing: 0
+caption:
+  font: inherit
+  desktop: 13
+  mobile: 13
+  line_height: 1.55
+  letter_spacing: 0
+numbers:
+  font: inherit
+  desktop: 11
+  mobile: 11
+  line_height: 1.55
+  letter_spacing: 0

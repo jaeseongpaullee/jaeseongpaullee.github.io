@@ -1,0 +1,30 @@
+project_title:
+  font: inherit
+  desktop: 51
+  mobile: 34
+  line_height: 1.05
+  letter_spacing: -0.05
+subtitle:
+  font: inherit
+  desktop: 13
+  mobile: 13
+  line_height: 1.55
+  letter_spacing: 0
+meta:
+  font: inherit
+  desktop: 11
+  mobile: 11
+  line_height: 1.55
+  letter_spacing: 0
+body:
+  font: inherit
+  desktop: 16
+  mobile: 16
+  line_height: 1.55
+  letter_spacing: 0
+body_heading:
+  font: inherit
+  desktop: 28
+  mobile: 24
+  line_height: 1.55
+  letter_spacing: 0

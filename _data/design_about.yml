@@ -1,0 +1,54 @@
+kicker:
+  font: inherit
+  desktop: 12
+  mobile: 12
+  line_height: 1.55
+  letter_spacing: 0
+english_name:
+  font: inherit
+  desktop: 90
+  mobile: 48
+  line_height: 1.05
+  letter_spacing: -0.05
+korean_name:
+  font: inherit
+  desktop: 16
+  mobile: 16
+  line_height: 1.55
+  letter_spacing: 0
+intro:
+  font: inherit
+  desktop: 22
+  mobile: 18
+  line_height: 1.55
+  letter_spacing: 0
+cv_section:
+  font: inherit
+  desktop: 11
+  mobile: 11
+  line_height: 1.55
+  letter_spacing: 0
+cv_year:
+  font: inherit
+  desktop: 11
+  mobile: 11
+  line_height: 1.55
+  letter_spacing: 0
+cv_title:
+  font: inherit
+  desktop: 15
+  mobile: 15
+  line_height: 1.55
+  letter_spacing: 0
+cv_body:
+  font: inherit
+  desktop: 13
+  mobile: 13
+  line_height: 1.55
+  letter_spacing: 0
+contact:
+  font: inherit
+  desktop: 38
+  mobile: 25
+  line_height: 1.55
+  letter_spacing: 0

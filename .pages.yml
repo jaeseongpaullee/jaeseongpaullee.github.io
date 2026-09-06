@@ -1,192 +1,672 @@
 media:
-  - name: images
-    label: Portfolio Images
-    input: assets/images
-    output: /assets/images
-    rename: safe
-    extensions:
+- name: images
+  label: Portfolio Images
+  input: assets/images
+  output: /assets/images
+  rename: safe
+  extensions:
+  - jpg
+  - jpeg
+  - png
+  - webp
+  categories:
+  - image
+- name: fonts
+  label: 웹폰트
+  input: assets/fonts
+  output: /assets/fonts
+  extensions:
+  - woff2
+  rename: safe
+content:
+- name: profile
+  label: About
+  type: file
+  path: _data/profile.yml
+  format: yaml
+  operations:
+    delete: false
+  fields:
+  - name: name_ko
+    label: 이름
+    type: string
+    required: true
+  - name: name_en
+    label: 영문 이름
+    type: text
+    required: true
+  - name: intro
+    label: 자기소개
+    type: text
+  - name: sections
+    label: CV / Profile
+    type: object
+    list:
+      collapsible:
+        collapsed: true
+        summary: '{title}'
+    fields:
+    - name: title
+      label: 섹션 이름
+      type: string
+      required: true
+    - name: items
+      label: 항목
+      type: object
+      list:
+        collapsible:
+          collapsed: true
+          summary: '{year} — {title}'
+      fields:
+      - name: year
+        label: 연도
+        type: string
+      - name: title
+        label: 제목
+        type: string
+      - name: description
+        label: 설명
+        type: text
+  - name: contact
+    label: Contact
+    type: object
+    fields:
+    - name: email
+      label: Email
+      type: string
+    - name: links
+      label: Links
+      type: object
+      list: true
+      fields:
+      - name: label
+        label: 표시 이름
+        type: string
+      - name: url
+        label: URL
+        type: string
+- name: projects
+  label: Projects
+  type: collection
+  path: _projects
+  format: yaml-frontmatter
+  filename: '{primary}.md'
+  view:
+    primary: title
+    fields:
+    - title
+    - year
+    - published
+    - featured
+    sort:
+    - order
+    - year
+    - title
+    default:
+      sort: order
+      order: asc
+  fields:
+  - name: title
+    label: 프로젝트 제목
+    type: string
+    required: true
+  - name: subtitle
+    label: 부제
+    type: string
+  - name: year
+    label: 연도
+    type: number
+  - name: order
+    label: 표시 순서
+    type: number
+    required: true
+  - name: location
+    label: 위치
+    type: string
+  - name: published
+    label: 공개
+    type: boolean
+  - name: featured
+    label: 메인 페이지에 표시
+    type: boolean
+  - name: cover
+    label: 대표 이미지
+    type: image
+    options:
+      media: images
+      extensions:
       - jpg
       - jpeg
       - png
       - webp
-    categories:
-      - image
-
-
-content:
-
-  # ==================================================
-  # ABOUT
-  # ==================================================
-
-  - name: profile
-    label: About
+      rename: safe
+  - name: body
+    label: 프로젝트 본문
+    type: rich-text
+    options:
+      format: markdown
+      media: images
+      rename: safe
+- name: design
+  label: 디자인 설정
+  type: file
+  path: _data/design.yml
+  format: yaml
+  operations:
+    delete: false
+  fields:
+  - name: content_width
+    label: 본문 최대 폭 (px · 기본 1120)
+    type: number
+    required: true
+    options:
+      min: 900
+      max: 1600
+  - name: font
+    label: 폰트
+    type: select
+    required: true
+    options:
+      values:
+      - name: original
+        label: 기존 폰트 (Inter Tight + Noto Sans KR)
+      - name: sans
+        label: 고딕 (Noto Sans KR)
+      - name: serif
+        label: 명조 (Noto Serif KR)
+  - name: text_scale
+    label: 본문·메뉴·캡션 글자 크기 (% · 기본 100)
+    type: number
+    required: true
+    options:
+      min: 85
+      max: 125
+  - name: heading_scale
+    label: 큰 제목·로고 글자 크기 (% · 기본 100)
+    type: number
+    required: true
+    options:
+      min: 75
+      max: 125
+  - name: custom1
+    label: 내 폰트 1 (WOFF2 파일)
     type: file
-    path: _data/profile.yml
-    format: yaml
-
-    operations:
-      delete: false
-
+    options:
+      media: fonts
+      extensions:
+      - woff2
+  - name: custom2
+    label: 내 폰트 2 (WOFF2 파일)
+    type: file
+    options:
+      media: fonts
+      extensions:
+      - woff2
+  - name: custom3
+    label: 내 폰트 3 (WOFF2 파일)
+    type: file
+    options:
+      media: fonts
+      extensions:
+      - woff2
+  - name: typography
+    label: 영역별 글꼴과 크기
+    type: object
     fields:
-
-      - name: name_ko
-        label: 이름
-        type: string
-        required: true
-
-      - name: name_en
-        label: 영문 이름
-        type: string
-        required: true
-
-      - name: intro
-        label: 자기소개
-        type: text
-
-      - name: sections
-        label: CV / Profile
-        type: object
-
-        list:
-          collapsible:
-            collapsed: true
-            summary: "{title}"
-
-        fields:
-
-          - name: title
-            label: 섹션 이름
-            type: string
-            required: true
-
-          - name: items
-            label: 항목
-            type: object
-
-            list:
-              collapsible:
-                collapsed: true
-                summary: "{year} — {title}"
-
-            fields:
-
-              - name: year
-                label: 연도
-                type: string
-
-              - name: title
-                label: 제목
-                type: string
-
-              - name: description
-                label: 설명
-                type: text
-
-
-      - name: contact
-        label: Contact
-        type: object
-
-        fields:
-
-          - name: email
-            label: Email
-            type: string
-
-          - name: links
-            label: Links
-            type: object
-            list: true
-
-            fields:
-
-              - name: label
-                label: 표시 이름
-                type: string
-
-              - name: url
-                label: URL
-                type: string
-
-
-  # ==================================================
-  # PROJECTS
-  # ==================================================
-
-  - name: projects
-    label: Projects
-    type: collection
-    path: _projects
-    format: yaml-frontmatter
-
-    filename: "{primary}.md"
-
-    view:
-      primary: title
+    - name: logo
+      label: 로고
+      type: object
       fields:
-        - title
-        - year
-        - published
-        - featured
-      sort:
-        - order
-        - year
-        - title
-      default:
-        sort: order
-        order: asc
-
-    fields:
-
-      - name: title
-        label: 프로젝트 제목
-        type: string
-        required: true
-
-      - name: subtitle
-        label: 부제
-        type: string
-
-      - name: year
-        label: 연도
-        type: number
-
-      - name: order
-        label: 표시 순서
-        type: number
-        required: true
-
-      - name: location
-        label: 위치
-        type: string
-
-      - name: published
-        label: 공개
-        type: boolean
-
-      - name: featured
-        label: 메인 페이지에 표시
-        type: boolean
-
-      - name: cover
-        label: 대표 이미지
-        type: image
-
+      - name: font
+        label: 폰트
+        type: select
         options:
-          media: images
-          extensions:
-            - jpg
-            - jpeg
-            - png
-            - webp
-          rename: safe
-
-      - name: body
-        label: 프로젝트 본문
-        type: rich-text
-
+          values: &id001
+          - name: inherit
+            label: 기존 설정 유지
+          - name: original
+            label: Inter Tight + Noto Sans KR
+          - name: sans
+            label: Noto Sans KR
+          - name: serif
+            label: Noto Serif KR
+          - name: mono
+            label: IBM Plex Mono
+          - name: custom1
+            label: 내 폰트 1
+          - name: custom2
+            label: 내 폰트 2
+          - name: custom3
+            label: 내 폰트 3
+      - name: desktop
+        label: PC 글자 크기 (px · 비우면 기존값)
+        type: number
         options:
-          format: markdown
-          media: images
-          rename: safe
+          min: 10
+          max: 180
+      - name: mobile
+        label: 모바일 글자 크기 (px · 비우면 기존값)
+        type: number
+        options:
+          min: 10
+          max: 100
+    - name: menu
+      label: 메뉴
+      type: object
+      fields:
+      - name: font
+        label: 폰트
+        type: select
+        options:
+          values: *id001
+      - name: desktop
+        label: PC 글자 크기 (px · 비우면 기존값)
+        type: number
+        options:
+          min: 10
+          max: 180
+      - name: mobile
+        label: 모바일 글자 크기 (px · 비우면 기존값)
+        type: number
+        options:
+          min: 10
+          max: 100
+    - name: home_label
+      label: Home 안내
+      type: object
+      fields:
+      - name: font
+        label: 폰트
+        type: select
+        options:
+          values: *id001
+      - name: desktop
+        label: PC 글자 크기 (px · 비우면 기존값)
+        type: number
+        options:
+          min: 10
+          max: 180
+      - name: mobile
+        label: 모바일 글자 크기 (px · 비우면 기존값)
+        type: number
+        options:
+          min: 10
+          max: 100
+    - name: caption
+      label: 이미지 캡션 제목
+      type: object
+      fields:
+      - name: font
+        label: 폰트
+        type: select
+        options:
+          values: *id001
+      - name: desktop
+        label: PC 글자 크기 (px · 비우면 기존값)
+        type: number
+        options:
+          min: 10
+          max: 180
+      - name: mobile
+        label: 모바일 글자 크기 (px · 비우면 기존값)
+        type: number
+        options:
+          min: 10
+          max: 100
+    - name: numbers
+      label: Home 번호·연도
+      type: object
+      fields:
+      - name: font
+        label: 폰트
+        type: select
+        options:
+          values: *id001
+      - name: desktop
+        label: PC 글자 크기 (px · 비우면 기존값)
+        type: number
+        options:
+          min: 10
+          max: 180
+      - name: mobile
+        label: 모바일 글자 크기 (px · 비우면 기존값)
+        type: number
+        options:
+          min: 10
+          max: 100
+    - name: kicker
+      label: 페이지 안내 제목
+      type: object
+      fields:
+      - name: font
+        label: 폰트
+        type: select
+        options:
+          values: *id001
+      - name: desktop
+        label: PC 글자 크기 (px · 비우면 기존값)
+        type: number
+        options:
+          min: 10
+          max: 180
+      - name: mobile
+        label: 모바일 글자 크기 (px · 비우면 기존값)
+        type: number
+        options:
+          min: 10
+          max: 100
+    - name: english_name
+      label: About 영문 이름
+      type: object
+      fields:
+      - name: font
+        label: 폰트
+        type: select
+        options:
+          values: *id001
+      - name: desktop
+        label: PC 글자 크기 (px · 비우면 기존값)
+        type: number
+        options:
+          min: 10
+          max: 180
+      - name: mobile
+        label: 모바일 글자 크기 (px · 비우면 기존값)
+        type: number
+        options:
+          min: 10
+          max: 100
+    - name: korean_name
+      label: About 한글 이름
+      type: object
+      fields:
+      - name: font
+        label: 폰트
+        type: select
+        options:
+          values: *id001
+      - name: desktop
+        label: PC 글자 크기 (px · 비우면 기존값)
+        type: number
+        options:
+          min: 10
+          max: 180
+      - name: mobile
+        label: 모바일 글자 크기 (px · 비우면 기존값)
+        type: number
+        options:
+          min: 10
+          max: 100
+    - name: intro
+      label: About 자기소개
+      type: object
+      fields:
+      - name: font
+        label: 폰트
+        type: select
+        options:
+          values: *id001
+      - name: desktop
+        label: PC 글자 크기 (px · 비우면 기존값)
+        type: number
+        options:
+          min: 10
+          max: 180
+      - name: mobile
+        label: 모바일 글자 크기 (px · 비우면 기존값)
+        type: number
+        options:
+          min: 10
+          max: 100
+    - name: cv_section
+      label: CV 섹션 제목
+      type: object
+      fields:
+      - name: font
+        label: 폰트
+        type: select
+        options:
+          values: *id001
+      - name: desktop
+        label: PC 글자 크기 (px · 비우면 기존값)
+        type: number
+        options:
+          min: 10
+          max: 180
+      - name: mobile
+        label: 모바일 글자 크기 (px · 비우면 기존값)
+        type: number
+        options:
+          min: 10
+          max: 100
+    - name: cv_year
+      label: CV 연도
+      type: object
+      fields:
+      - name: font
+        label: 폰트
+        type: select
+        options:
+          values: *id001
+      - name: desktop
+        label: PC 글자 크기 (px · 비우면 기존값)
+        type: number
+        options:
+          min: 10
+          max: 180
+      - name: mobile
+        label: 모바일 글자 크기 (px · 비우면 기존값)
+        type: number
+        options:
+          min: 10
+          max: 100
+    - name: cv_title
+      label: CV 항목 제목
+      type: object
+      fields:
+      - name: font
+        label: 폰트
+        type: select
+        options:
+          values: *id001
+      - name: desktop
+        label: PC 글자 크기 (px · 비우면 기존값)
+        type: number
+        options:
+          min: 10
+          max: 180
+      - name: mobile
+        label: 모바일 글자 크기 (px · 비우면 기존값)
+        type: number
+        options:
+          min: 10
+          max: 100
+    - name: cv_body
+      label: CV 설명
+      type: object
+      fields:
+      - name: font
+        label: 폰트
+        type: select
+        options:
+          values: *id001
+      - name: desktop
+        label: PC 글자 크기 (px · 비우면 기존값)
+        type: number
+        options:
+          min: 10
+          max: 180
+      - name: mobile
+        label: 모바일 글자 크기 (px · 비우면 기존값)
+        type: number
+        options:
+          min: 10
+          max: 100
+    - name: contact
+      label: 연락처
+      type: object
+      fields:
+      - name: font
+        label: 폰트
+        type: select
+        options:
+          values: *id001
+      - name: desktop
+        label: PC 글자 크기 (px · 비우면 기존값)
+        type: number
+        options:
+          min: 10
+          max: 180
+      - name: mobile
+        label: 모바일 글자 크기 (px · 비우면 기존값)
+        type: number
+        options:
+          min: 10
+          max: 100
+    - name: archive_title
+      label: Projects 큰 제목
+      type: object
+      fields:
+      - name: font
+        label: 폰트
+        type: select
+        options:
+          values: *id001
+      - name: desktop
+        label: PC 글자 크기 (px · 비우면 기존값)
+        type: number
+        options:
+          min: 10
+          max: 180
+      - name: mobile
+        label: 모바일 글자 크기 (px · 비우면 기존값)
+        type: number
+        options:
+          min: 10
+          max: 100
+    - name: project_title
+      label: 프로젝트 제목
+      type: object
+      fields:
+      - name: font
+        label: 폰트
+        type: select
+        options:
+          values: *id001
+      - name: desktop
+        label: PC 글자 크기 (px · 비우면 기존값)
+        type: number
+        options:
+          min: 10
+          max: 180
+      - name: mobile
+        label: 모바일 글자 크기 (px · 비우면 기존값)
+        type: number
+        options:
+          min: 10
+          max: 100
+    - name: subtitle
+      label: 프로젝트 부제
+      type: object
+      fields:
+      - name: font
+        label: 폰트
+        type: select
+        options:
+          values: *id001
+      - name: desktop
+        label: PC 글자 크기 (px · 비우면 기존값)
+        type: number
+        options:
+          min: 10
+          max: 180
+      - name: mobile
+        label: 모바일 글자 크기 (px · 비우면 기존값)
+        type: number
+        options:
+          min: 10
+          max: 100
+    - name: meta
+      label: 프로젝트 번호·연도·위치
+      type: object
+      fields:
+      - name: font
+        label: 폰트
+        type: select
+        options:
+          values: *id001
+      - name: desktop
+        label: PC 글자 크기 (px · 비우면 기존값)
+        type: number
+        options:
+          min: 10
+          max: 180
+      - name: mobile
+        label: 모바일 글자 크기 (px · 비우면 기존값)
+        type: number
+        options:
+          min: 10
+          max: 100
+    - name: body
+      label: 프로젝트 본문
+      type: object
+      fields:
+      - name: font
+        label: 폰트
+        type: select
+        options:
+          values: *id001
+      - name: desktop
+        label: PC 글자 크기 (px · 비우면 기존값)
+        type: number
+        options:
+          min: 10
+          max: 180
+      - name: mobile
+        label: 모바일 글자 크기 (px · 비우면 기존값)
+        type: number
+        options:
+          min: 10
+          max: 100
+    - name: body_heading
+      label: 프로젝트 본문 소제목
+      type: object
+      fields:
+      - name: font
+        label: 폰트
+        type: select
+        options:
+          values: *id001
+      - name: desktop
+        label: PC 글자 크기 (px · 비우면 기존값)
+        type: number
+        options:
+          min: 10
+          max: 180
+      - name: mobile
+        label: 모바일 글자 크기 (px · 비우면 기존값)
+        type: number
+        options:
+          min: 10
+          max: 100
+    - name: footer
+      label: 푸터
+      type: object
+      fields:
+      - name: font
+        label: 폰트
+        type: select
+        options:
+          values: *id001
+      - name: desktop
+        label: PC 글자 크기 (px · 비우면 기존값)
+        type: number
+        options:
+          min: 10
+          max: 180
+      - name: mobile
+        label: 모바일 글자 크기 (px · 비우면 기존값)
+        type: number
+        options:
+          min: 10
+          max: 100

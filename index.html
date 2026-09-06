@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="ko">
 
 <head>
@@ -10,9 +11,34 @@
     content="width=device-width, initial-scale=1.0"
   >
 
+  <meta
+    name="description"
+    content="JAESEONG PAUL LEE Architecture Portfolio"
+  >
+
   <title>
     JPaulLEE
   </title>
+
+
+  <!-- FONT -->
+
+  <link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+  >
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&family=Noto+Sans+KR:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  >
+
 
   <link
     rel="stylesheet"
@@ -25,7 +51,9 @@
 <body>
 
 
-  <!-- HEADER -->
+  <!-- =========================================
+       HEADER
+       ========================================= -->
 
   <header class="site-header">
 
@@ -40,6 +68,7 @@
     <a
       class="site-logo"
       href="index.html"
+      aria-current="page"
     >
       JPaulLEE
     </a>
@@ -47,7 +76,7 @@
 
     <a
       class="nav-right"
-      href="projects.html"
+      href="project.html"
     >
       projects
     </a>
@@ -56,80 +85,236 @@
 
 
 
-  <!-- HOME -->
+  <!-- =========================================
+       HOME
+       ========================================= -->
 
-  <main class="home-gallery">
+  <main class="home-page">
 
 
-    <!-- IMAGE 01 -->
+    <section class="home-intro">
 
-    <a
-      class="home-image home-image-wide"
-      href="projects/bury-a-friend.html"
-    >
+      <p class="home-intro-left">
+        Architecture Portfolio
+      </p>
 
-      <img
-        src="images/bury-a-friend-cover.webp"
-        alt="BURY A FRIEND"
+      <p class="home-intro-right">
+        Jaeseong Paul Lee · Selected Works
+      </p>
+
+    </section>
+
+
+
+    <section class="home-gallery">
+
+
+      <!-- 01 BURY A FRIEND -->
+
+      <a
+        class="home-card home-card-wide reveal"
+        href="project.html#bury-a-friend"
       >
 
-    </a>
+        <div
+          class="image-frame"
+          data-fallback="BURY A FRIEND"
+        >
+
+          <img
+            src="images/bury-a-friend-cover.webp"
+            alt="BURY A FRIEND"
+          >
+
+        </div>
+
+
+        <div class="home-caption">
+
+          <span class="home-caption-number">
+            01
+          </span>
+
+          <span class="home-caption-title">
+            BURY A FRIEND
+          </span>
+
+          <span class="home-caption-year">
+            2026
+          </span>
+
+        </div>
+
+      </a>
 
 
 
-    <!-- IMAGE 02 -->
+      <!-- 02 TONGIN MARKET -->
 
-    <a
-      class="home-image"
-      href="projects/tongin-market.html"
-    >
-
-      <img
-        src="images/tongin-market-cover.webp"
-        alt="TONGIN MARKET"
+      <a
+        class="home-card home-card-left reveal"
+        href="project.html#tongin-market"
       >
 
-    </a>
+        <div
+          class="image-frame"
+          data-fallback="TONGIN MARKET"
+        >
+
+          <img
+            src="images/tongin-market-cover.webp"
+            alt="TONGIN MARKET"
+          >
+
+        </div>
+
+
+        <div class="home-caption">
+
+          <span class="home-caption-number">
+            02
+          </span>
+
+          <span class="home-caption-title">
+            TONGIN MARKET
+          </span>
+
+          <span class="home-caption-year">
+            2025
+          </span>
+
+        </div>
+
+      </a>
 
 
 
-    <!-- IMAGE 03 -->
+      <!-- 03 JUMP -->
 
-    <a
-      class="home-image"
-      href="projects/jump.html"
-    >
-
-      <img
-        src="images/jump-cover.webp"
-        alt="JUMP!"
+      <a
+        class="home-card home-card-right reveal"
+        href="project.html#jump"
       >
 
-    </a>
+        <div
+          class="image-frame"
+          data-fallback="JUMP! 당신의 속도는?"
+        >
+
+          <img
+            src="images/jump-cover.webp"
+            alt="JUMP 당신의 속도는"
+          >
+
+        </div>
+
+
+        <div class="home-caption">
+
+          <span class="home-caption-number">
+            03
+          </span>
+
+          <span class="home-caption-title">
+            JUMP! 당신의 속도는?
+          </span>
+
+          <span class="home-caption-year">
+            2026
+          </span>
+
+        </div>
+
+      </a>
 
 
 
-    <!-- IMAGE 04 -->
+      <!-- 04 FUTURE PROJECT -->
 
-    <div class="home-image home-image-wide home-placeholder">
-      PROJECT 04
-    </div>
+      <div
+        class="home-card home-card-small-left future-card reveal"
+      >
 
-
-
-    <!-- IMAGE 05 -->
-
-    <div class="home-image home-placeholder">
-      PROJECT 05
-    </div>
+        <div
+          class="image-frame"
+          data-fallback="PROJECT 04"
+        >
+        </div>
 
 
-    <div class="home-image home-placeholder">
-      PROJECT 06
-    </div>
+        <div class="home-caption">
 
+          <span class="home-caption-number">
+            04
+          </span>
+
+          <span class="home-caption-title">
+            PROJECT TO BE ADDED
+          </span>
+
+          <span class="home-caption-year">
+            —
+          </span>
+
+        </div>
+
+      </div>
+
+
+
+      <!-- 05 FUTURE PROJECT -->
+
+      <div
+        class="home-card home-card-small-right future-card reveal"
+      >
+
+        <div
+          class="image-frame"
+          data-fallback="PROJECT 05"
+        >
+        </div>
+
+
+        <div class="home-caption">
+
+          <span class="home-caption-number">
+            05
+          </span>
+
+          <span class="home-caption-title">
+            PROJECT TO BE ADDED
+          </span>
+
+          <span class="home-caption-year">
+            —
+          </span>
+
+        </div>
+
+      </div>
+
+
+    </section>
 
   </main>
+
+
+
+  <footer class="site-footer">
+
+    <span>
+      © 2026 JAESEONG PAUL LEE
+    </span>
+
+    <span>
+      Architecture Portfolio
+    </span>
+
+  </footer>
+
+
+
+  <script src="script.js"></script>
 
 
 </body>

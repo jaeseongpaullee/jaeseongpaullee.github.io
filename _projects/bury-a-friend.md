@@ -7,3 +7,4 @@ published: true
 featured: true
 cover: /assets/images/buryafriendcover01.jpg
 ---
+BURY A FRIEND는 '살아남은 자'를 위한 건축입니다.

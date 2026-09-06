@@ -11,11 +11,41 @@ sections:
   - title: Experience
     items:
       - year: "2026"
-        title: TheM Architects & Engineers Co., Ltd. | Intern
+        title: TheM Architects & Engineers Co., Ltd.
+        description: Intern
   - title: Honors
+    items:
+      - year: 2025 Dec.
+        title: Commendation, Mayor of Suwon
+        description: Distinguished contribution to Suwon Urban Architecture Festival
+      - year: 2025 Dec.
+        title: SAK Project Exhibition Award
+        description: Excellence prize, Design Studio VI
+      - year: 2025 Jul.
+        title: SAK Project Exhibition Award
+        description: Excellence prize, Design Studio V
+      - year: 2024 Dec.
+        title: SAK Cross-Year Project
+        description: Excellence prize, as Team Leader
+      - year: 2023 Jul.
+        title: SAK Project Exhibition Award
+        description: Excellence prize, Design Studio I
+      - year: 2023 Jul.
+        title: SAK Project Exhibition Award
+        description: Excellence prize, Architecture Drawing I
   - title: Activities
   - title: Exhibitions
   - title: Tools
+    items:
+      - title: Revit | SketchUP | Rhino
+      - title: AutoCAD | Photoshop | InDesign
+      - title: D5 | QGIS | ComfyUI
   - title: Language
+    items:
+      - title: Korean (Native)
+      - title: English (Fluent)
+        description: TOEIC 920
+      - title: French (Basic)
+        description: DELF A2
 contact:
   email: jslarchi0@gmail.com

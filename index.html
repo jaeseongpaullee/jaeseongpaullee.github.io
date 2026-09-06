@@ -11,17 +11,8 @@
     content="width=device-width, initial-scale=1.0"
   >
 
-  <meta
-    name="description"
-    content="JAESEONG PAUL LEE Architecture Portfolio"
-  >
+  <title>JPaulLEE</title>
 
-  <title>
-    JPaulLEE
-  </title>
-
-
-  <!-- FONT -->
 
   <link
     rel="preconnect"
@@ -35,14 +26,15 @@
   >
 
   <link
-    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&family=Noto+Sans+KR:wght@400;500;600&display=swap"
+    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter+Tight:wght@400;500;600&family=Noto+Sans+KR:wght@400;500&display=swap"
     rel="stylesheet"
   >
 
 
+  <!-- v=6은 브라우저가 옛날 CSS를 기억하지 않게 합니다 -->
   <link
     rel="stylesheet"
-    href="style.css"
+    href="style.css?v=6"
   >
 
 </head>
@@ -51,14 +43,10 @@
 <body>
 
 
-  <!-- =========================================
-       HEADER
-       ========================================= -->
-
   <header class="site-header">
 
     <a
-      class="nav-left"
+      class="header-left"
       href="about.html"
     >
       about
@@ -66,7 +54,7 @@
 
 
     <a
-      class="site-logo"
+      class="header-center"
       href="index.html"
       aria-current="page"
     >
@@ -75,7 +63,7 @@
 
 
     <a
-      class="nav-right"
+      class="header-right"
       href="project.html"
     >
       projects
@@ -85,11 +73,7 @@
 
 
 
-  <!-- =========================================
-       HOME
-       ========================================= -->
-
-  <main class="home-page">
+  <main class="home">
 
 
     <section class="home-intro">
@@ -99,7 +83,7 @@
       </p>
 
       <p class="home-intro-right">
-        Jaeseong Paul Lee · Selected Works
+        Jaeseong Paul Lee · Selected Works · 2025—2026
       </p>
 
     </section>
@@ -109,37 +93,34 @@
     <section class="home-gallery">
 
 
-      <!-- 01 BURY A FRIEND -->
+      <!-- BURY A FRIEND -->
 
       <a
-        class="home-card home-card-wide reveal"
-        href="project.html#bury-a-friend"
+        class="work-card work-full reveal"
+        href="project.html#bury"
       >
 
         <div
-          class="image-frame"
-          data-fallback="BURY A FRIEND"
+          class="work-image"
+          style="
+            --image:
+            url('images/bury-a-friend-cover.webp');
+          "
         >
-
-          <img
-            src="images/bury-a-friend-cover.webp"
-            alt="BURY A FRIEND"
-          >
-
         </div>
 
 
-        <div class="home-caption">
+        <div class="work-caption">
 
-          <span class="home-caption-number">
+          <span class="work-number">
             01
           </span>
 
-          <span class="home-caption-title">
+          <span class="work-title">
             BURY A FRIEND
           </span>
 
-          <span class="home-caption-year">
+          <span class="work-year">
             2026
           </span>
 
@@ -149,37 +130,34 @@
 
 
 
-      <!-- 02 TONGIN MARKET -->
+      <!-- TONGIN -->
 
       <a
-        class="home-card home-card-left reveal"
-        href="project.html#tongin-market"
+        class="work-card work-left reveal"
+        href="project.html#tongin"
       >
 
         <div
-          class="image-frame"
-          data-fallback="TONGIN MARKET"
+          class="work-image"
+          style="
+            --image:
+            url('images/tongin-market-cover.webp');
+          "
         >
-
-          <img
-            src="images/tongin-market-cover.webp"
-            alt="TONGIN MARKET"
-          >
-
         </div>
 
 
-        <div class="home-caption">
+        <div class="work-caption">
 
-          <span class="home-caption-number">
+          <span class="work-number">
             02
           </span>
 
-          <span class="home-caption-title">
+          <span class="work-title">
             TONGIN MARKET
           </span>
 
-          <span class="home-caption-year">
+          <span class="work-year">
             2025
           </span>
 
@@ -189,37 +167,34 @@
 
 
 
-      <!-- 03 JUMP -->
+      <!-- JUMP -->
 
       <a
-        class="home-card home-card-right reveal"
+        class="work-card work-right reveal"
         href="project.html#jump"
       >
 
         <div
-          class="image-frame"
-          data-fallback="JUMP! 당신의 속도는?"
+          class="work-image"
+          style="
+            --image:
+            url('images/jump-cover.webp');
+          "
         >
-
-          <img
-            src="images/jump-cover.webp"
-            alt="JUMP 당신의 속도는"
-          >
-
         </div>
 
 
-        <div class="home-caption">
+        <div class="work-caption">
 
-          <span class="home-caption-number">
+          <span class="work-number">
             03
           </span>
 
-          <span class="home-caption-title">
+          <span class="work-title">
             JUMP! 당신의 속도는?
           </span>
 
-          <span class="home-caption-year">
+          <span class="work-year">
             2026
           </span>
 
@@ -229,30 +204,33 @@
 
 
 
-      <!-- 04 FUTURE PROJECT -->
+      <!-- FUTURE 04 -->
 
       <div
-        class="home-card home-card-small-left future-card reveal"
+        class="work-card
+               work-small-left
+               future
+               reveal"
       >
 
         <div
-          class="image-frame"
-          data-fallback="PROJECT 04"
+          class="work-image"
+          data-label="PROJECT 04"
         >
         </div>
 
 
-        <div class="home-caption">
+        <div class="work-caption">
 
-          <span class="home-caption-number">
+          <span class="work-number">
             04
           </span>
 
-          <span class="home-caption-title">
+          <span class="work-title">
             PROJECT TO BE ADDED
           </span>
 
-          <span class="home-caption-year">
+          <span class="work-year">
             —
           </span>
 
@@ -262,30 +240,33 @@
 
 
 
-      <!-- 05 FUTURE PROJECT -->
+      <!-- FUTURE 05 -->
 
       <div
-        class="home-card home-card-small-right future-card reveal"
+        class="work-card
+               work-small-right
+               future
+               reveal"
       >
 
         <div
-          class="image-frame"
-          data-fallback="PROJECT 05"
+          class="work-image"
+          data-label="PROJECT 05"
         >
         </div>
 
 
-        <div class="home-caption">
+        <div class="work-caption">
 
-          <span class="home-caption-number">
+          <span class="work-number">
             05
           </span>
 
-          <span class="home-caption-title">
+          <span class="work-title">
             PROJECT TO BE ADDED
           </span>
 
-          <span class="home-caption-year">
+          <span class="work-year">
             —
           </span>
 
@@ -313,8 +294,7 @@
   </footer>
 
 
-
-  <script src="script.js"></script>
+  <script src="script.js?v=6"></script>
 
 
 </body>

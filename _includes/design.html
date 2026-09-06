@@ -1,0 +1,22 @@
+{% assign design = site.data.design %}
+{% if design.font == 'serif' %}
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;500;600&display=swap" rel="stylesheet">
+{% endif %}
+<style>
+:root {
+  --content-width: {{ design.content_width | default: 1120 | plus: 0 | at_least: 900 | at_most: 1600 }}px;
+  --text-scale: {{ design.text_scale | default: 100 | plus: 0 | at_least: 85 | at_most: 125 | divided_by: 100.0 }};
+  --heading-scale: {{ design.heading_scale | default: 100 | plus: 0 | at_least: 75 | at_most: 125 | divided_by: 100.0 }};
+  {% case design.font %}
+  {% when 'sans' %}
+  --body-font: 'Noto Sans KR', Arial, sans-serif;
+  --detail-font: 'Noto Sans KR', Arial, sans-serif;
+  {% when 'serif' %}
+  --body-font: 'Noto Serif KR', Georgia, serif;
+  --detail-font: 'Noto Serif KR', Georgia, serif;
+  {% else %}
+  --body-font: 'Inter Tight', 'Noto Sans KR', Arial, sans-serif;
+  --detail-font: 'IBM Plex Mono', monospace;
+  {% endcase %}
+}
+</style>

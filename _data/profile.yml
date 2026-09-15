@@ -35,6 +35,14 @@ sections:
       - year: 2023 Jul.
         title: SAK Project Exhibition Award
         description: Excellence prize, Architecture Drawing I
+  - title: SCHOLARSHIPS
+    items:
+      - year: 2023 - 2025
+        title: Academic Merit Scholarship
+        description: Kyonggi University
+      - year: 2023 - 2025
+        title: Academic Merit Scholarship
+        description: Ansan City Human Resources Development Foundation
   - title: Activities
     items:
       - year: 2023 - Present
@@ -49,14 +57,6 @@ sections:
       - year: 2024 - 2025
         title: Gujo Design Club
         description: Program Tutor, Led Study Sessions on Drafting, CAD, and Revit
-  - title: SCHOLARSHIPS
-    items:
-      - year: 2023 - 2025
-        title: Academic Merit Scholarship
-        description: Kyonggi University
-      - year: 2023 - 2025
-        title: Academic Merit Scholarship
-        description: Ansan City Human Resources Development Foundation
   - title: Exhibitions
     items:
       - year: 2026 Jul.
